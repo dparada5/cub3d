@@ -1,0 +1,6 @@
+parseo de mapa:
+
+- Guardar texturas de las coordenadas y los colores del C y F
+- comenzar con la MLX
+
+si una linea es solo espacios pero el mapa esta cerrado (tipo una "isla")
