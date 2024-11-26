@@ -14,9 +14,30 @@
 # define CUB3D_H
 
 # include "LIBFT/libft.h"
+# include <math.h>
 // # include "MLX/include/MLX42/MLX42.h"
 //estructura de texturas
 //estructura de coordenadas?build
+
+typedef struct s_ray
+{
+	double	pos_x; //posicion inicial del rayo
+	double	pos_y;
+	double	dir_x; // direccion que va a ir el rayo
+	double	dir_y;
+	// info dda
+	double	delta_dist_x; // distancia que debe recorrer el rayo para cruzar una celda del mapa en el eje x/y
+	double	delta_dist_y;
+	double	side_dist_x; // indica la distancia inicial del rayo desde su pos actual hasta el primer borde de la celda en x/y
+	double	side_dist_y;
+	double	step_x; // la direccion en que el rayo avanza en cada eje x/y
+	double	step_y;
+	// info de colisiion
+	int	map_x; // donde colisiona en x
+	int	map_y; // donde colisiona en y
+	double	dis; // distancia que recorre el rayo hasta la colision
+	int	side; // ver como lo hacemos, pero esta variable indica que lado impacto, si vertical u horizontal
+}	t_ray;
 
 typedef struct s_coor
 {
