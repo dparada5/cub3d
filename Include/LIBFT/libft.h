@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:17:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/03 11:38:01 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:47:59 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_isspace(char c);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen_matrix(char **matrix);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);

@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:08:46 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/20 11:41:13 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:32:18 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,5 @@ void	ft_check_map(t_cub *game)
 	add_spaces(game);
 	// change_spaces(game);
 	count_players(game);
-	print_matrix(game->map);
+	// print_matrix(game->map);
 }

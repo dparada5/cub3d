@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:08:42 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/20 11:41:26 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:16:54 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	open_map(t_cub *game, char *argv)
 {
 	char	*name;
 
+	if (!ft_strcmp(argv, "Maps/.cub"))
+		ft_msj_error(game, 1, "Not valid name.");//revisar si es legal basicamente
 	name = ft_strchr(argv, '.');
 	if (ft_strcmp(name, ".cub"))
 		return (ft_msj_error(game, 1, "Incorrect map?"));
@@ -47,7 +49,8 @@ void	ft_msj_error(t_cub *game, int use, char *str)
 		ft_putendl_fd("./cub3d Maps/map.cub", 2);
 		return ;
 	}
-	game->error_flag = 1;
+	free_game(game);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_print_coor(t_cub *game)

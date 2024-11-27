@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:20:20 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/21 11:27:54 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 11:09:14 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@ static void	ft_save_coor(t_cub *game, char *line)
 {
 	//consultas a personas:
 	//espacios pueden haber muchos o tienen que tener maximo uno? tabs son permitidos
-	if (!game->coor->north && !ft_strncmp(line, "NO", 2))
-		game->coor->north = ft_strdup(line);
-	else if (!ft_strncmp(line, "SO", 2))
-		game->coor->south = ft_strdup(line);
-	else if (!ft_strncmp(line, "WE", 2))
-		game->coor->west = ft_strdup(line);
-	else if (!ft_strncmp(line, "EA", 2))
-		game->coor->east = ft_strdup(line);
-	else if (!ft_strncmp(line, "F", 1))
-		game->coor->floor = ft_strdup(line);
-	else if (!ft_strncmp(line, "C", 1))
-		game->coor->cealing = ft_strdup(line);
-	else if (game->coor->n_coor >= 6 && ft_strcmp(line, "\n") \
+	
+	if (!game->coor->north && !ft_strncmp(line, "NO ", 3))
+		game->coor->north = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (!game->coor->south && !ft_strncmp(line, "SO ", 3))
+		game->coor->south = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (!game->coor->west && !ft_strncmp(line, "WE ", 3))
+		game->coor->west = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (!game->coor->east && !ft_strncmp(line, "EA ",3))
+		game->coor->east = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (!game->coor->floor && !ft_strncmp(line, "F ", 2))
+		game->coor->floor = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (!game->coor->cealing && !ft_strncmp(line, "C ", 2))
+		game->coor->cealing = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (game->coor->n_coor >= 6 && ft_strcmp(line, "\n") \
 	&& !ft_is_all_space(line))
 		game->start_map = 1;
 	if (ft_strcmp(line, "\n") && ft_strlen(line))
