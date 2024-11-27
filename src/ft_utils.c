@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:08:42 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 10:16:54 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:14:20 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	open_map(t_cub *game, char *argv)
 {
 	char	*name;
 
+	//revisar si es legal basicamente
 	if (!ft_strcmp(argv, "Maps/.cub"))
-		ft_msj_error(game, 1, "Not valid name.");//revisar si es legal basicamente
+		ft_msj_error(game, 1, "Not valid name.");
 	name = ft_strchr(argv, '.');
 	if (ft_strcmp(name, ".cub"))
 		return (ft_msj_error(game, 1, "Incorrect map?"));
@@ -67,10 +68,9 @@ void	ft_print_coor(t_cub *game)
 	ft_putnbr_fd(aux->n_coor, 1);
 }
 
-
 void	print_matrix(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (!matrix)

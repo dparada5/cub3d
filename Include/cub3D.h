@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 10:56:31 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:10:14 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ typedef	struct	s_colors
 	int	blue;
 	int	yellow;
 }				t_colors;
+
+typedef struct	s_player
+{
+	int 	x;
+	int		y;
+	char	view;
+}			t_player;
 
 typedef struct s_coor
 {
@@ -51,7 +58,8 @@ typedef struct s_cub
 	int		map_len;
 	int		error_flag;
 	int		start_map;
-	int		player;
+	int		n_player;
+	t_player	*player;
 	t_coor	*coor;
 }			t_cub;
 
@@ -68,5 +76,7 @@ void	ft_maps(t_cub *game, char *aux, char *result, char *prev);
 void	open_textures(t_cub *game);
 //--------------------------FREE--------------------------
 void	free_game(t_cub *game);
+//--------------------------DELETE------------------------
+void	printf_player(t_cub *game);
 
 #endif

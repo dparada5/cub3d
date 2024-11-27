@@ -6,7 +6,7 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:19:55 by dparada           #+#    #+#              #
-#    Updated: 2024/11/25 15:27:28 by dparada          ###   ########.fr        #
+#    Updated: 2024/11/27 15:10:24 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures
+SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))
@@ -85,6 +85,6 @@ fclean:
 re: fclean all
 
 norm:
-		@norminette $(SRC)
+		norminette $(SRC_DIR)
 
 .PHONY: all clean fclean re compiling

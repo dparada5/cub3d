@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:55:07 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 12:18:27 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 12:40:29 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static mlx_image_t	*ft_texture_to_img(t_cub *game, char *line)
 {
 	mlx_texture_t	*aux;
 	mlx_image_t		*img;
-	
+
 	aux = NULL;
 	img = NULL;
 	aux = mlx_load_png(line);
@@ -49,7 +49,7 @@ static mlx_image_t	*ft_texture_to_img(t_cub *game, char *line)
 		return (ft_msj_error(game, 1, "Path to texture incorrect."), NULL);
 	img = mlx_texture_to_image(game->mlx, aux);
 	if (!img)
-		return (ft_msj_error(game, 1,"Converting texture to image."), NULL);
+		return (ft_msj_error(game, 1, "Converting texture to image."), NULL);
 	mlx_delete_texture(aux);
 	return (img);
 }
@@ -58,24 +58,21 @@ int	check_colors(t_cub *game, char *str)
 {
 	int	i;
 	int	aux;
-	
+
 	i = -1;
 	aux = -1;
 	while (str[++i])
 		if (str[i] != '-' && str[i] != '+' && !ft_isdigit(str[i]))
-		{
-			ft_putchar_fd(str[i], 2);	
 			ft_msj_error(game, 1, "Incorrect character in color asignation.");
-		}
 	aux = ft_atoi(str);
 	if (aux > 255 || aux < 0)
 		ft_msj_error(game, 1, "Invalid range of numbers in color asignation.");
 	return (aux);
 }
 
-t_colors *save_colors(t_cub *game, char **matrix)
+static t_colors	*save_colors(t_cub *game, char **matrix)
 {
-	int	i;
+	int			i;
 	t_colors	*aux;
 
 	i = -1;
@@ -92,15 +89,15 @@ t_colors *save_colors(t_cub *game, char **matrix)
 
 void	open_textures(t_cub *game)
 {
-	int	i;
+	int		i;
 	char	**aux;
-	
+
 	i = 0;
 	aux = NULL;
 	if (!check_line(game, 0, game->coor->north, "No path to texture.") \
-	 || !check_line(game, 0, game->coor->south, "No path to texture.")\
-	 || !check_line(game, 0, game->coor->west, "No path to texture.") \
-	 || !check_line(game, 0, game->coor->east, "No path to texture."))
+		|| !check_line(game, 0, game->coor->south, "No path to texture.") \
+		|| !check_line(game, 0, game->coor->west, "No path to texture.") \
+		|| !check_line(game, 0, game->coor->east, "No path to texture."))
 		return (ft_msj_error(game, 1, "Too many spaces/tabs in texture line."));
 	game->coor->north_i = ft_texture_to_img(game, &game->coor->north[3]);
 	game->coor->south_i = ft_texture_to_img(game, &game->coor->south[3]);
