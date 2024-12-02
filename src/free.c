@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:49:09 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/20 11:41:17 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 12:43:33 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void	free_game(t_cub *game)
 			free_coor(game->coor);
 		if (game->fd != -1)
 			close(game->fd);
-		free(game);	
+		free(game);
 	}
 }

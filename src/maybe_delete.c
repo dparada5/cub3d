@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   maybe_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 17:05:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 10:37:17 by dparada          ###   ########.fr       */
+/*   Created: 2024/11/27 12:46:14 by dparada           #+#    #+#             */
+/*   Updated: 2024/11/27 15:09:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Include/cub3D.h"
 
-int	ft_isdigit(int c)
+void	change_spaces(t_cub *game)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	else
-		return (0);
+	int	y;
+	int	x;
+
+	y = -1;
+	if (game->error_flag)
+		return ;
+	while (game->map[++y])
+	{
+		x = -1;
+		while (game->map[y][++x])
+			if (game->map[y][x] == ' ')
+				game->map[y][x] = '1';
+	}
+}
+
+void	printf_player(t_cub *game)
+{
+	printf("x = %d y = %d view = %c\n", game->player->x, game->player->y, game->player->view);
 }

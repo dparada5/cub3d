@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:08:46 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/20 11:41:13 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:08:19 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,11 @@ static int	check_char(t_cub *game, char current, char c)
 	return (1);
 }
 
-void	change_spaces(t_cub *game)
-{
-	int	y;
-	int	x;
-
-	y = -1;
-	if (game->error_flag)
-		return ;
-	while (game->map[++y])
-	{		
-		x = -1;
-		while (game->map[y][++x])
-			if (game->map[y][x] == ' ')
-				game->map[y][x] = '1';
-	}
-	// ft_replace_char(game->map[y], '1', ' ');
-}
-
 void	add_spaces(t_cub *game)
 {
 	size_t	max;
 	int		y;
-	// char	*aux;
-	
+
 	y = -1;
 	max = ft_strlen(game->map[0]);
 	while (game->map[++y])
@@ -73,10 +54,8 @@ void	add_spaces(t_cub *game)
 			max = ft_strlen(game->map[y]);
 	y = -1;
 	while (game->map[++y])
-	{
 		while (ft_strlen(game->map[y]) < max)
 			game->map[y] = ft_strjoin(game->map[y], " ");
-	}
 }
 
 static void	count_players(t_cub *game)
@@ -92,9 +71,14 @@ static void	count_players(t_cub *game)
 		x = -1;
 		while (game->map[y][++x])
 			if (ft_strchr("NSWE", game->map[y][x]))
-				game->player++;
+			{
+				game->player->x = x;
+				game->player->y = y;
+				game->player->view = game->map[y][x];
+				game->n_player++;
+			}
 	}
-	if (game->player != 1)
+	if (game->n_player != 1)
 		ft_msj_error(game, 1, "Invalid number of players.");
 }
 
@@ -113,7 +97,7 @@ void	ft_check_map(t_cub *game)
 		{
 			check_valid_walls(game, y, x);
 			if (y > 0 && x > 0)
-			{	
+			{
 				check_char(game, game->map[y][x], game->map[y][x - 1]);
 				check_char(game, game->map[y][x], game->map[y][x + 1]);
 				check_char(game, game->map[y][x], game->map[y - 1][x]);
@@ -125,5 +109,4 @@ void	ft_check_map(t_cub *game)
 	add_spaces(game);
 	// change_spaces(game);
 	count_players(game);
-	print_matrix(game->map);
 }

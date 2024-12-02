@@ -6,7 +6,7 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 11:56:30 by dparada           #+#    #+#              #
-#    Updated: 2024/11/21 11:44:15 by dparada          ###   ########.fr        #
+#    Updated: 2024/11/25 15:28:04 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SOURCE = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_strlcat.c ft_calloc.c ft_strdup.c ft_putchar_fd.c ft_putstr_fd.c\
 		ft_putendl_fd.c ft_putnbr_fd.c ft_striteri.c ft_substr.c\
 		ft_strmapi.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c\
-		ft_strcmp.c ft_strlen_matrix.c
+		ft_strcmp.c ft_strlen_matrix.c ft_isspace.c
 		
 # SOURCE_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c\
 # 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\

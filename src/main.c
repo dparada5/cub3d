@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:37 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/20 11:41:30 by dparada          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:10:40 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	ft_init_game(t_cub *game)
 {
+	game->mlx = mlx_init(1000, 1000, "cub3D", false);
+	if (!game->mlx)
+		ft_msj_error(game, 1, NULL);
 	game->coor = malloc(sizeof(t_coor));
+	if (!game->coor)
+		ft_msj_error(game, 1, "Malloc failed.");
 	game->coor->n_coor = 0;
 	game->coor->north = NULL;
 	game->coor->south = NULL;
@@ -22,11 +27,20 @@ void	ft_init_game(t_cub *game)
 	game->coor->west = NULL;
 	game->coor->floor = NULL;
 	game->coor->cealing = NULL;
+	game->coor->north_i = NULL;
+	game->coor->south_i = NULL;
+	game->coor->east_i = NULL;
+	game->coor->west_i = NULL;
+	game->coor->t_ceiling = NULL;
+	game->coor->t_floor = NULL;
+	game->player = malloc(sizeof(t_player));
+	if (!game->player)
+		ft_msj_error(game, 1, "Malloc failed.");
 	game->map = NULL;
 	game->error_flag = 0;
 	game->map_len = 0;
 	game->start_map = 0;
-	game->player = 0;
+	game->n_player = 0;
 	game->fd = -1;
 }
 
@@ -43,6 +57,8 @@ int	main(int argc, char **argv)
 	open_map(game, argv[1]);
 	ft_maps(game, NULL, NULL, NULL);
 	ft_check_map(game);
+	open_textures(game);
+	printf_player(game);
 	free_game(game);
 	return (0);
 }
