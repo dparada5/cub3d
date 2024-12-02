@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_maps.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:08:46 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 15:08:19 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/02 18:48:37 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static void	count_players(t_cub *game)
 				game->player->x = x;
 				game->player->y = y;
 				game->player->view = game->map[y][x];
+				game->player->r_view = get_radian(game->map[y][x]);
 				game->n_player++;
 			}
 	}
