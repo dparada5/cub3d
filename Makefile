@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
+#    By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:19:55 by dparada           #+#    #+#              #
-#    Updated: 2024/11/27 15:10:24 by dparada          ###   ########.fr        #
+#    Updated: 2024/12/02 18:39:08 by tanselmo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete
+SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete \
+			init_mlx_game set_moves put_textures ray_casting
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))
