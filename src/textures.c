@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:55:07 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 12:40:29 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/02 16:36:45 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ static t_colors	*save_colors(t_cub *game, char **matrix)
 	if (!aux)
 		ft_msj_error(game, 1, "Malloc failed.");
 	aux->red = check_colors(game, matrix[0]);
-	aux->blue = check_colors(game, matrix[1]);
-	aux->yellow = check_colors(game, matrix[2]);
+	aux->green = check_colors(game, matrix[1]);
+	aux->blue = check_colors(game, matrix[2]);
 	return (aux);
 }
 
