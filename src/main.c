@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:37 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 15:10:40 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/02 16:10:14 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_init_game(t_cub *game)
 {
-	game->mlx = mlx_init(1000, 1000, "cub3D", false);
+	game->mlx = mlx_init(W_WIDTH, W_HEIGHT, "cub3D", false);
 	if (!game->mlx)
 		ft_msj_error(game, 1, NULL);
 	game->coor = malloc(sizeof(t_coor));
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	ft_maps(game, NULL, NULL, NULL);
 	ft_check_map(game);
 	open_textures(game);
-	printf_player(game);
+	init_mlx_game(game);
 	free_game(game);
 	return (0);
 }
