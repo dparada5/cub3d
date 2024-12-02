@@ -1,6 +1,11 @@
-parseo de mapa:
+-Ver variables en estructura s_ray
 
-- Guardar texturas de las coordenadas y los colores del C y F
-- comenzar con la MLX
+-Ver de agregar la estructura del s_player con informacion necesaria para el ray casting como:
+posicion
+hacia donde mira
+definir el fov(field of view(campo de vision xd))
 
-si una linea es solo espacios pero el mapa esta cerrado (tipo una "isla")
+-Comenzar a calcular las distancias hacia los muros
+
+-Ray casting info
+https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/
