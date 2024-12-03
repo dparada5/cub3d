@@ -20,8 +20,9 @@
 //estructura de coordenadas?build
 
 # define W_WIDTH 1000
-# define W_HEIGHT 1000
+# define W_HEIGHT 800
 # define FOV 60.0
+# define P_MOVE //velocidad a la que se mueve el player
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
 
@@ -68,6 +69,15 @@ typedef struct s_ray
 	double	distance;
 	double	col_x; // POSICION DE COLISION X / Y
 	double	col_y;
+
+	// DDA
+	double	side_dist_x; // Distancia entre intersecciones en el eje x
+	double	side_dist_y; // Distancia entre intersecciones en el eje y
+	double	delta_dist_x; // Distancia inicial al primer lado en x
+	double	delta_dist_y; // Distancia inicial al primer lado en y
+	int		step_x; // Direccion de avance en x (1 o -1)
+	int		step_y; // Direccion de avance en y (1 o -1)
+	int		side;
 }	t_ray;
 
 typedef struct s_coor
