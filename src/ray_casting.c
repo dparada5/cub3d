@@ -90,6 +90,18 @@ static void	set_distance(t_cub *g, t_ray *ray)
 		ray->side_dist_y = (g->player->y - floor(g->player->y)) * ray->delta_dist_y;
 }
 
+static void	create_walls(t_cub *g, t_ray *ray, int i)
+{
+	double	distance_corrected;
+	int		wall_height;
+
+	distance_corrected = (ray->distance * cos(ray->ang - g->player->r_view));
+	wall_height = (W_HEIGHT / distance_corrected);
+	if (wall_height > W_HEIGHT)
+		wall_height = W_HEIGHT;
+	paint_wall(g, ray, i, wall_height);
+}
+
 void	ray_casting(t_cub *g, t_ray *ray)
 {
 	int		i;
@@ -110,6 +122,7 @@ void	ray_casting(t_cub *g, t_ray *ray)
 		ray[i].delta_dist_y = fabs(1 / ray[i].sin);
 		set_distance(g, &ray[i]);
 		collision_bucle(g, &ray[i]);
+		create_walls(g, &ray[i], i);
 		i++;
 	}
 }
