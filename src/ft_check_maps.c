@@ -6,7 +6,7 @@
 /*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:08:46 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/02 18:48:37 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:54:35 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,13 @@ static int	check_valid_walls(t_cub *game, int y, int x)
 
 static int	check_char(t_cub *game, char current, char c)
 {
-	if (game->error_flag)
-		return (0);
-	if (!c)
-		return (1);
-	else if (!ft_strchr("10NSWE ", current))
+	if (!ft_strchr("10NSWE ", current))
 		return (ft_msj_error(game, 1, "Invalid char on map."), 0);
 	else if (current == '1' || current == ' ')
 		return (1);
-	else if (current == '0' && !ft_strchr("10NSWE", c))
+	else if (current == '0' && (!ft_strchr("10NSWE", c) || !c))
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
-	else if (ft_strchr("NSWE", current) && !ft_strchr("10", c))
+	else if (ft_strchr("NSWE", current) && (!ft_strchr("10", c) || !c))
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
 	return (1);
 }
@@ -72,8 +68,8 @@ static void	count_players(t_cub *game)
 		while (game->map[y][++x])
 			if (ft_strchr("NSWE", game->map[y][x]))
 			{
-				game->player->x = x;
-				game->player->y = y;
+				game->player->x = x + 0.5;
+				game->player->y = y + 0.5;
 				game->player->view = game->map[y][x];
 				game->player->r_view = get_radian(game->map[y][x]);
 				game->n_player++;
@@ -103,11 +99,14 @@ void	ft_check_map(t_cub *game)
 				check_char(game, game->map[y][x], game->map[y][x + 1]);
 				check_char(game, game->map[y][x], game->map[y - 1][x]);
 				if (game->map[y + 1])
+				{
 					check_char(game, game->map[y][x], game->map[y + 1][x]);
+				}
 			}
 		}
 	}
 	add_spaces(game);
-	// change_spaces(game);
+	change_spaces(game);
 	count_players(game);
+	print_matrix(game->map);
 }

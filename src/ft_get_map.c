@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:20:20 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 12:44:14 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/05 18:58:03 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void	ft_maps(t_cub *game, char *aux, char *result, char *prev)
 		{
 			aux = result;
 			if (!ft_strcmp(line, "\n") || !ft_strlen(line))
-				if (!is_map_closed(game, prev))
-					return ;
+				is_map_closed(game, prev);
 			result = ft_strjoin(aux, line);
 		}
 		free(prev);
