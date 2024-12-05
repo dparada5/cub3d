@@ -6,11 +6,11 @@ double	get_radian(int c)
 	if (c == 'E')
 		return (0);
 	else if (c == 'N')
-		return (N_PI_2);
+		return (N_PI + N_PI_2);
 	else if (c == 'W')
 		return (N_PI);
 	else
-		return (N_PI + N_PI_2);
+		return (N_PI_2);
 }
 
 static double	calculate_distance(t_cub *g, t_ray *ray, int map_x, int map_y)
@@ -80,13 +80,13 @@ static void	set_distance(t_cub *g, t_ray *ray)
 	else
 		ray->step_y = 1;
 	// Calcular distancias
-	if (ray->step_x == 1) // Calcular distancia positivo en x
+	if (ray->step_x == 1)
 		ray->side_dist_x = (floor(g->player->x) + 1 - g->player->x) * ray->delta_dist_x;
-	else // Calcular distancia negativo en x
+	else
 		ray->side_dist_x = (g->player->x - floor(g->player->x)) * ray->delta_dist_x;
-	if (ray->step_y == 1) // Calcular distancia positivo en y
+	if (ray->step_y == 1)
 		ray->side_dist_y = (floor(g->player->y) + 1 - g->player->y) * ray->delta_dist_y;
-	else // Calcular distancia negativo en y
+	else
 		ray->side_dist_y = (g->player->y - floor(g->player->y)) * ray->delta_dist_y;
 }
 
@@ -94,12 +94,24 @@ static void	create_walls(t_cub *g, t_ray *ray, int i)
 {
 	double	distance_corrected;
 	int		wall_height;
+	double	start_y;
+	double	end_y;
 
 	distance_corrected = (ray->distance * cos(ray->ang - g->player->r_view));
 	wall_height = (W_HEIGHT / distance_corrected);
 	if (wall_height > W_HEIGHT)
 		wall_height = W_HEIGHT;
-	paint_wall(g, ray, i, wall_height);
+	start_y = W_HEIGHT / 2 - (W_HEIGHT / (2 * distance_corrected));
+	end_y = W_HEIGHT / 2 + (W_HEIGHT / (2 * distance_corrected));
+	if (start_y < 0)
+		start_y = 0;
+	if (end_y >= W_HEIGHT)
+		end_y = W_HEIGHT - 1;
+	while (start_y <= end_y)
+	{
+		mlx_put_pixel(g->window_img, i, start_y, get_rgba(39, 168, 54, 255));
+		start_y++;
+	}
 }
 
 void	ray_casting(t_cub *g, t_ray *ray)
@@ -112,10 +124,10 @@ void	ray_casting(t_cub *g, t_ray *ray)
 	i = 0;
 	r_fov = FOV * N_PI / 180;
 	ang = (FOV / W_WIDTH) * N_PI / 180;
-	start = g->player->r_view + (ang * (W_WIDTH / 2));
+	start = g->player->r_view - (ang * (W_WIDTH / 2));
 	while (i < W_WIDTH)
 	{
-		ray[i].ang = start - (ang * i);
+		ray[i].ang = start + (ang * i);
 		ray[i].cos = cos(ray[i].ang);
 		ray[i].sin = sin(ray[i].ang);
 		ray[i].delta_dist_x = fabs(1 / ray[i].cos);

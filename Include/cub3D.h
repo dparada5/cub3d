@@ -6,7 +6,7 @@
 /*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/02 19:30:35 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:54:56 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 //estructura de texturas
 //estructura de coordenadas?build
 
-# define W_WIDTH 1000
-# define W_HEIGHT 800
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 # define FOV 60.0
-# define P_MOVE //velocidad a la que se mueve el player
+# define P_MOVE 0.075
+# define ANG_MOVE 0.0349
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
 
@@ -40,26 +41,6 @@ typedef struct	s_player
 	char	view;
 	double	r_view;
 }			t_player;
-
-// typedef struct s_ray
-// {
-// 	double	pos_x; //posicion inicial del rayo
-// 	double	pos_y;
-// 	double	dir_x; // direccion que va a ir el rayo
-// 	double	dir_y;
-// 	// info dda
-// 	double	delta_dist_x; // distancia que debe recorrer el rayo para cruzar una celda del mapa en el eje x/y
-// 	double	delta_dist_y;
-// 	double	side_dist_x; // indica la distancia inicial del rayo desde su pos actual hasta el primer borde de la celda en x/y
-// 	double	side_dist_y;
-// 	double	step_x; // la direccion en que el rayo avanza en cada eje x/y
-// 	double	step_y;
-// 	// info de colisiion
-// 	int	map_x; // donde colisiona en x
-// 	int	map_y; // donde colisiona en y
-// 	double	dis; // distancia que recorre el rayo hasta la colision
-// 	int	side; // ver como lo hacemos, pero esta variable indica que lado impacto, si vertical u horizontal
-// }	t_ray;
 
 typedef struct s_ray
 {
@@ -124,6 +105,7 @@ void	init_mlx_game(t_cub *game);
 void	set_moves(mlx_key_data_t key, void *param);
 //---------------------------PUT TEXTURES-----------------
 void	put_textures(t_cub *g);
+int		get_rgba(int r, int g, int b, int a);
 
 //---------------------------UTILS------------------------
 void	ft_msj_error(t_cub *game, int use, char *str);
@@ -131,6 +113,7 @@ int		ft_is_all_space(char *line);
 void	open_map(t_cub *game, char *argv);
 void	ft_print_coor(t_cub *game);
 void	print_matrix(char **matrix);
+void	change_spaces(t_cub *game);
 //--------------------------MAPS--------------------------
 void	ft_check_map(t_cub *game);
 void	ft_maps(t_cub *game, char *aux, char *result, char *prev);
