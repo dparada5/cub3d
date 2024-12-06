@@ -6,7 +6,7 @@
 /*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/05 18:54:56 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:56:29 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 //estructura de coordenadas?build
 
 # define W_WIDTH 1920
+# define W_WIDTH_2 (W_WIDTH) / 2
+# define W_WIDTH_4 (W_WIDTH) / 4
 # define W_HEIGHT 1080
 # define FOV 60.0
 # define P_MOVE 0.075
-# define ANG_MOVE 0.0349
+# define ANG_MOVE 0.0174533
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
 
@@ -103,6 +105,12 @@ void	init_mlx_game(t_cub *game);
 
 //---------------------------MOVES------------------------
 void	set_moves(mlx_key_data_t key, void *param);
+//---------------------------KEYS------------------------
+void	key_w(t_cub *g);
+void	key_s(t_cub *g);
+void	key_a(t_cub *g);
+void	key_d(t_cub *g);
+void	key_left_right(t_cub *g, mlx_key_data_t key);
 //---------------------------PUT TEXTURES-----------------
 void	put_textures(t_cub *g);
 int		get_rgba(int r, int g, int b, int a);
