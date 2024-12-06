@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:49:09 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/06 17:16:12 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/06 17:17:25 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	free_coor(mlx_t *mlx, t_coor *coor)
 		free(coor->t_ceiling);
 	if (coor->t_floor)
 		free(coor->t_floor);
+	ft_delete_images(mlx, coor);
 	if (coor)
 		free(coor);
 }
