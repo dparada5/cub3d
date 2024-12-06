@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:20:20 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 12:44:14 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/06 16:43:06 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	ft_maps(t_cub *game, char *aux, char *result, char *prev)
 {
 	char	*line;
 
-	if (game->error_flag)
-		return ;
 	line = get_next_line(game->fd);
 	while (line)
 	{
@@ -62,8 +60,7 @@ void	ft_maps(t_cub *game, char *aux, char *result, char *prev)
 		{
 			aux = result;
 			if (!ft_strcmp(line, "\n") || !ft_strlen(line))
-				if (!is_map_closed(game, prev))
-					return ;
+				is_map_closed(game, prev);
 			result = ft_strjoin(aux, line);
 		}
 		free(prev);

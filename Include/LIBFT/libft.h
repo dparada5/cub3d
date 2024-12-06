@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:17:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/25 13:47:59 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/05 14:58:21 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,8 @@ char	*ft_itoap(int n);
 char	*ft_itoa_u(unsigned int n);
 char	*ft_convert_he(unsigned long nb, char *base);
 char	*ft_new(char *ptr);
+
+void	ft_printf_fd(char const *str, ...);
+void	print_matrix(char **matrix);
 
 #endif

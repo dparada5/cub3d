@@ -6,14 +6,14 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:19:55 by dparada           #+#    #+#              #
-#    Updated: 2024/11/27 15:10:24 by dparada          ###   ########.fr        #
+#    Updated: 2024/12/06 11:54:24 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC 		= clang
 NAME 	= cub3D
 USER 	= dparada
-CFLAGS 	= -Wall -Wextra -Werror -g
+CFLAGS 	= -Wall -Wextra -Werror -g -fsanitize=address
 LIBFT 	= ./Include/LIBFT/libft.a
 MLX42 	= ./Include/MLX42_P2/build/libmlx42.a
 MLX_FLAGS = -Iinclude -ldl -lglfw -pthread -lm
@@ -32,7 +32,7 @@ CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete
+SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete save_memory
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))

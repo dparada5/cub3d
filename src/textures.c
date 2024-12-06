@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:55:07 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 12:40:29 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/06 17:10:28 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static int	check_line(t_cub *game, int u, char *line, char *msg_error)
 	return (1);
 }
 
-static mlx_image_t	*ft_texture_to_img(t_cub *game, char *line)
+mlx_image_t	*ft_texture_to_img(t_cub *game, char *line)
 {
 	mlx_texture_t	*aux;
 	mlx_image_t		*img;
 
 	aux = NULL;
 	img = NULL;
-	aux = mlx_load_png(line);
+	aux = mlx_load_png((const char *)line);
 	if (!aux)
 		return (ft_msj_error(game, 1, "Path to texture incorrect."), NULL);
 	img = mlx_texture_to_image(game->mlx, aux);
@@ -54,7 +54,7 @@ static mlx_image_t	*ft_texture_to_img(t_cub *game, char *line)
 	return (img);
 }
 
-int	check_colors(t_cub *game, char *str)
+static int	check_colors(t_cub *game, char *str)
 {
 	int	i;
 	int	aux;

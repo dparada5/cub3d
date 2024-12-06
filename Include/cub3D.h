@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 15:10:14 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/06 17:11:26 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef	struct	s_colors
 
 typedef struct	s_player
 {
-	int 	x;
-	int		y;
+	double	x;
+	double	y;
 	char	view;
 }			t_player;
 
@@ -88,8 +88,7 @@ typedef struct s_cub
 void	ft_msj_error(t_cub *game, int use, char *str);
 int		ft_is_all_space(char *line);
 void	open_map(t_cub *game, char *argv);
-void	ft_print_coor(t_cub *game);
-void	print_matrix(char **matrix);
+void	change_spaces(t_cub *game);
 //--------------------------MAPS--------------------------
 void	ft_check_map(t_cub *game);
 void	ft_maps(t_cub *game, char *aux, char *result, char *prev);
@@ -97,7 +96,9 @@ void	ft_maps(t_cub *game, char *aux, char *result, char *prev);
 void	open_textures(t_cub *game);
 //--------------------------FREE--------------------------
 void	free_game(t_cub *game);
+//--------------------------MALLOC--------------------------
+t_coor	*malloc_coor(t_cub *game);
 //--------------------------DELETE------------------------
 void	printf_player(t_cub *game);
-
+void	printf_coor(t_coor *coor);
 #endif
