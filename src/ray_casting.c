@@ -61,12 +61,10 @@ static void	collision_bucle(t_cub *g, t_ray *ray)
 			ray->side = 1;
 		}
 		if (g->map[map_y][map_x] == '1')
-		{
-			set_collision(g, ray, map_x, map_y);
-			ray->distance = calculate_distance(g, ray, map_x, map_y);
 			break ;
-		}
 	}
+	set_collision(g, ray, map_x, map_y);
+	ray->distance = calculate_distance(g, ray, map_x, map_y);
 }
 
 static void	set_distance(t_cub *g, t_ray *ray)

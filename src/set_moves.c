@@ -3,7 +3,6 @@
 static void	close_window(t_cub *game)
 {
 	mlx_close_window(game->mlx);
-	free_game(game);
 }
 
 static void	make_move(t_cub *g, mlx_key_data_t key)
