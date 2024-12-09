@@ -6,7 +6,7 @@
 /*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/06 18:56:29 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:13:32 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,25 @@
 //estructura de coordenadas?build
 
 # define W_WIDTH 1920
-# define W_WIDTH_2 (W_WIDTH) / 2
-# define W_WIDTH_4 (W_WIDTH) / 4
 # define W_HEIGHT 1080
 # define FOV 60.0
 # define P_MOVE 0.075
 # define ANG_MOVE 0.0174533
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
+
+typedef struct s_minimap
+{
+	int	start_y;
+	int	start_x;
+	int	end_y;
+	int	end_x;
+	int	width;
+	int	height;
+	int	pixel_size;
+	int	offset_y;
+	int	offset_x;
+}				t_minimap;
 
 typedef	struct	s_colors
 {
@@ -94,6 +105,7 @@ typedef struct s_cub
 	t_ray		*ray;
 	t_player	*player;
 	t_coor		*coor;
+	t_minimap	*mini_map;
 }			t_cub;
 
 //---------------------------RAY CASTING------------------
@@ -102,10 +114,14 @@ void	ray_casting(t_cub *g, t_ray *ray);
 
 //---------------------------INIT MLX GAME----------------
 void	init_mlx_game(t_cub *game);
-
+void	mini_map(void *g);
 //---------------------------MOVES------------------------
 void	set_moves(mlx_key_data_t key, void *param);
-//---------------------------KEYS------------------------
+
+//---------------------------DISTANCE---------------------
+void	set_distance(t_cub *g, t_ray *ray);
+double	calculate_distance(t_cub *g, t_ray *ray, int map_x, int map_y);
+//---------------------------KEYS-------------------------
 void	key_w(t_cub *g);
 void	key_s(t_cub *g);
 void	key_a(t_cub *g);

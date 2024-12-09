@@ -12,15 +12,28 @@ double	get_radian(int c)
 		return (N_PI_2);
 }
 
-static double	calculate_distance(t_cub *g, t_ray *ray, int map_x, int map_y)
+static void	create_walls(t_cub *g, t_ray *ray, int i)
 {
-	double	dis;
+	double	distance_corrected;
+	int		wall_height;
+	double	start_y;
+	double	end_y;
 
-	if (ray->side == 0)
-		dis = (map_x - g->player->x + (1 - ray->step_x) / 2) / ray->cos;
-	else
-		dis = (map_y - g->player->y + (1 - ray->step_y) / 2) / ray->sin;
-	return (dis);
+	distance_corrected = (ray->distance * cos(ray->ang - g->player->r_view));
+	wall_height = (W_HEIGHT / distance_corrected);
+	if (wall_height > W_HEIGHT)
+		wall_height = W_HEIGHT;
+	start_y = W_HEIGHT / 2 - (W_HEIGHT / (2 * distance_corrected));
+	end_y = W_HEIGHT / 2 + (W_HEIGHT / (2 * distance_corrected));
+	if (start_y < 0)
+		start_y = 0;
+	if (end_y >= W_HEIGHT)
+		end_y = W_HEIGHT - 1;
+	while (start_y <= end_y)
+	{
+		mlx_put_pixel(g->window_img, i, start_y, get_rgba(39, 168, 54, 255));
+		start_y++;
+	}
 }
 
 static void	set_collision(t_cub *g, t_ray *ray, int map_x, int map_y)
@@ -65,54 +78,6 @@ static void	collision_bucle(t_cub *g, t_ray *ray)
 	}
 	set_collision(g, ray, map_x, map_y);
 	ray->distance = calculate_distance(g, ray, map_x, map_y);
-}
-
-static void	set_distance(t_cub *g, t_ray *ray)
-{
-	if (ray->cos < 0)
-		ray->step_x = -1;
-	else
-		ray->step_x = 1;
-	if (ray->sin < 0)
-		ray->step_y = -1;
-	else
-		ray->step_y = 1;
-	if (ray->step_x == 1)
-		ray->side_dist_x = (floor(g->player->x) + 1
-				- g->player->x) * ray->delta_dist_x;
-	else
-		ray->side_dist_x = (g->player->x - floor(g->player->x))
-			* ray->delta_dist_x;
-	if (ray->step_y == 1)
-		ray->side_dist_y = (floor(g->player->y) + 1
-				- g->player->y) * ray->delta_dist_y;
-	else
-		ray->side_dist_y = (g->player->y - floor(g->player->y))
-			* ray->delta_dist_y;
-}
-
-static void	create_walls(t_cub *g, t_ray *ray, int i)
-{
-	double	distance_corrected;
-	int		wall_height;
-	double	start_y;
-	double	end_y;
-
-	distance_corrected = (ray->distance * cos(ray->ang - g->player->r_view));
-	wall_height = (W_HEIGHT / distance_corrected);
-	if (wall_height > W_HEIGHT)
-		wall_height = W_HEIGHT;
-	start_y = W_HEIGHT / 2 - (W_HEIGHT / (2 * distance_corrected));
-	end_y = W_HEIGHT / 2 + (W_HEIGHT / (2 * distance_corrected));
-	if (start_y < 0)
-		start_y = 0;
-	if (end_y >= W_HEIGHT)
-		end_y = W_HEIGHT - 1;
-	while (start_y <= end_y)
-	{
-		mlx_put_pixel(g->window_img, i, start_y, get_rgba(39, 168, 54, 255));
-		start_y++;
-	}
 }
 
 void	ray_casting(t_cub *g, t_ray *ray)

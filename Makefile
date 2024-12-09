@@ -6,7 +6,7 @@
 #    By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:19:55 by dparada           #+#    #+#              #
-#    Updated: 2024/12/06 17:59:33 by tanselmo         ###   ########.fr        #
+#    Updated: 2024/12/09 13:04:49 by tanselmo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ BOLD	= \033[1m
 RED		= \033[31;1m
 
 SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete \
-			init_mlx_game set_moves put_textures ray_casting keys
+			init_mlx_game set_moves put_textures ray_casting keys distance mini_map \
+			
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))
