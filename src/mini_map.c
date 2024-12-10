@@ -87,7 +87,7 @@ static void	put_walls(t_cub *g, t_minimap *m_map, int player_x, int player_y)
 		{
 			if (g->map[start_y][start_x] == '1')
 			{
-				printf("entra %d\n", m_map->start_y);
+				//printf("entra %d\n", m_map->start_y);
 				mlx_put_pixel(g->window_img, paint_x, paint_y, get_rgba(230, 255, 100, 255));
 			}
 			start_x--;
