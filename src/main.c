@@ -1,4 +1,3 @@
-
 #include "../Include/cub3D.h"
 
 void	ft_init_game(t_cub *game)
@@ -15,6 +14,9 @@ void	ft_init_game(t_cub *game)
 	game->start_map = 0;
 	game->n_player = 0;
 	game->fd = -1;
+	game->mini_map = malloc(sizeof(t_minimap));
+	if (!game->mini_map)
+		ft_msj_error(game, 1, "Malloc failed.");
 }
 
 int	main(int argc, char **argv)

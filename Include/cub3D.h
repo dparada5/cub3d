@@ -1,3 +1,4 @@
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -7,12 +8,26 @@
 //estructura de texturas
 //estructura de coordenadas?build
 
-# define W_WIDTH 1000
-# define W_HEIGHT 800
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 # define FOV 60.0
-# define P_MOVE //velocidad a la que se mueve el player
+# define P_MOVE 0.075
+# define ANG_MOVE 0.0174533
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
+
+typedef struct s_minimap
+{
+	int	start_y;
+	int	start_x;
+	int	end_y;
+	int	end_x;
+	int	width;
+	int	height;
+	int	pixel_size;
+	int	offset_y;
+	int	offset_x;
+}				t_minimap;
 
 typedef	struct	s_colors
 {
@@ -28,26 +43,6 @@ typedef struct	s_player
 	char	view;
 	double	r_view;
 }			t_player;
-
-// typedef struct s_ray
-// {
-// 	double	pos_x; //posicion inicial del rayo
-// 	double	pos_y;
-// 	double	dir_x; // direccion que va a ir el rayo
-// 	double	dir_y;
-// 	// info dda
-// 	double	delta_dist_x; // distancia que debe recorrer el rayo para cruzar una celda del mapa en el eje x/y
-// 	double	delta_dist_y;
-// 	double	side_dist_x; // indica la distancia inicial del rayo desde su pos actual hasta el primer borde de la celda en x/y
-// 	double	side_dist_y;
-// 	double	step_x; // la direccion en que el rayo avanza en cada eje x/y
-// 	double	step_y;
-// 	// info de colisiion
-// 	int	map_x; // donde colisiona en x
-// 	int	map_y; // donde colisiona en y
-// 	double	dis; // distancia que recorre el rayo hasta la colision
-// 	int	side; // ver como lo hacemos, pero esta variable indica que lado impacto, si vertical u horizontal
-// }	t_ray;
 
 typedef struct s_ray
 {
@@ -99,6 +94,7 @@ typedef struct s_cub
 	t_ray		*ray;
 	t_player	*player;
 	t_coor		*coor;
+	t_minimap	*mini_map;
 }			t_cub;
 
 //---------------------------RAY CASTING------------------
@@ -107,11 +103,22 @@ void	ray_casting(t_cub *g, t_ray *ray);
 
 //---------------------------INIT MLX GAME----------------
 void	init_mlx_game(t_cub *game);
-
+void	mini_map(void *g);
 //---------------------------MOVES------------------------
 void	set_moves(mlx_key_data_t key, void *param);
+
+//---------------------------DISTANCE---------------------
+void	set_distance(t_cub *g, t_ray *ray);
+double	calculate_distance(t_cub *g, t_ray *ray, int map_x, int map_y);
+//---------------------------KEYS-------------------------
+void	key_w(t_cub *g);
+void	key_s(t_cub *g);
+void	key_a(t_cub *g);
+void	key_d(t_cub *g);
+void	key_left_right(t_cub *g, mlx_key_data_t key);
 //---------------------------PUT TEXTURES-----------------
 void	put_textures(t_cub *g);
+int		get_rgba(int r, int g, int b, int a);
 
 //---------------------------UTILS------------------------
 void	ft_msj_error(t_cub *game, int use, char *str);

@@ -55,8 +55,8 @@ static void	count_players(t_cub *game)
 		{
 			if (ft_strchr("NSWE", game->map[y][x]))
 			{
-				game->player->x = x;
-				game->player->y = y;
+				game->player->x = x + 0.5;
+				game->player->y = y + 0.5;
 				game->player->view = game->map[y][x];
 				game->player->r_view = get_radian(game->map[y][x]);
 				game->n_player++;
@@ -89,9 +89,11 @@ void	ft_check_map(t_cub *game)
 				check_char(game, game->map[y][x], game->map[y - 1][x]);
 				if (game->map[y] && game->map[y + 1])
 					check_char(game, game->map[y][x], game->map[y + 1][x]);
+				}
 			}
 		}
 	}
 	change_spaces(game);
 	count_players(game);
+	print_matrix(game->map);
 }

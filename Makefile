@@ -20,8 +20,9 @@ CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete save_memory\
-			init_mlx_game set_moves put_textures ray_casting
+SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete save_memory \
+			init_mlx_game set_moves put_textures ray_casting keys distance mini_map \
+			
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))
