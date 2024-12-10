@@ -48,6 +48,6 @@ void	init_mlx_game(t_cub *game)
 	mlx_key_hook(game->mlx, &set_moves, game);
 	mlx_loop_hook(game->mlx, &mouse_cam, game);
 	ray_casting(game, ray);
-	mlx_loop_hook(game->mlx, &mini_map, game);
+	//mlx_loop_hook(game->mlx, &mini_map, game);
 	mlx_loop(game->mlx);
 }
