@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 11:55:07 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/06 17:10:28 by dparada          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../Include/cub3D.h"
 
 static int	check_line(t_cub *game, int u, char *line, char *msg_error)
@@ -37,21 +25,15 @@ static int	check_line(t_cub *game, int u, char *line, char *msg_error)
 	return (1);
 }
 
-mlx_image_t	*ft_texture_to_img(t_cub *game, char *line)
+static mlx_texture_t	*ft_load_texture(t_cub *game, char *line)
 {
-	mlx_texture_t	*aux;
-	mlx_image_t		*img;
+	mlx_texture_t	*txt;
 
-	aux = NULL;
-	img = NULL;
-	aux = mlx_load_png((const char *)line);
-	if (!aux)
+	txt = NULL;
+	txt = mlx_load_png((const char *)line);
+	if (!txt)
 		return (ft_msj_error(game, 1, "Path to texture incorrect."), NULL);
-	img = mlx_texture_to_image(game->mlx, aux);
-	if (!img)
-		return (ft_msj_error(game, 1, "Converting texture to image."), NULL);
-	mlx_delete_texture(aux);
-	return (img);
+	return (txt);
 }
 
 static int	check_colors(t_cub *game, char *str)
@@ -99,10 +81,10 @@ void	open_textures(t_cub *game)
 		|| !check_line(game, 0, game->coor->west, "No path to texture.") \
 		|| !check_line(game, 0, game->coor->east, "No path to texture."))
 		return (ft_msj_error(game, 1, "Too many spaces/tabs in texture line."));
-	game->coor->north_i = ft_texture_to_img(game, &game->coor->north[3]);
-	game->coor->south_i = ft_texture_to_img(game, &game->coor->south[3]);
-	game->coor->east_i = ft_texture_to_img(game, &game->coor->east[3]);
-	game->coor->west_i = ft_texture_to_img(game, &game->coor->west[3]);
+	game->coor->north_i = ft_load_texture(game, &game->coor->north[3]);
+	game->coor->south_i = ft_load_texture(game, &game->coor->south[3]);
+	game->coor->east_i = ft_load_texture(game, &game->coor->east[3]);
+	game->coor->west_i = ft_load_texture(game, &game->coor->west[3]);
 	if (!check_line(game, 1, game->coor->floor, "No path to color.") \
 	|| !check_line(game, 1, game->coor->cealing, "No path to color."))
 		return (ft_msj_error(game, 1, "Too many spaces/tabs in color line."));

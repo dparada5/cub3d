@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:03:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/06 17:11:26 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 10:41:35 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ typedef struct s_coor
 	int		n_coor;
 	t_colors	*t_floor;//liberar memoria
 	t_colors	*t_ceiling;//liberar memoria
-	mlx_image_t	*north_i;
-	mlx_image_t	*south_i;
-	mlx_image_t	*west_i;
-	mlx_image_t	*east_i;
+	mlx_texture_t	*north_i;
+	mlx_texture_t	*south_i;
+	mlx_texture_t	*west_i;
+	mlx_texture_t	*east_i;
 }				t_coor;
 
 typedef struct s_cub
