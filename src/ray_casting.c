@@ -18,7 +18,9 @@ static void	create_walls(t_cub *g, t_ray *ray, int i)
 	int		wall_height;
 	double	start_y;
 	double	end_y;
+	int		rgba;
 
+	rgba = get_rgba(39, 168, 54, 255);
 	distance_corrected = (ray->distance * cos(ray->ang - g->player->r_view));
 	wall_height = (W_HEIGHT / distance_corrected);
 	if (wall_height > W_HEIGHT)
@@ -29,9 +31,23 @@ static void	create_walls(t_cub *g, t_ray *ray, int i)
 		start_y = 0;
 	if (end_y >= W_HEIGHT)
 		end_y = W_HEIGHT - 1;
+	if (ray->side == 0)
+	{
+		if (ray->cos > 0) // east
+			rgba = get_rgba(251, 100, 255, 255);
+		else // west
+			rgba = get_rgba(39, 168, 54, 255);
+	}
+	if (ray->side == 1) 
+	{
+		if (ray->sin > 0) // south
+			rgba = get_rgba(0, 126, 255, 255);
+		else // north
+			rgba = get_rgba(255, 0, 0, 255);
+	}
 	while (start_y <= end_y)
 	{
-		mlx_put_pixel(g->window_img, i, start_y, get_rgba(39, 168, 54, 255));
+		mlx_put_pixel(g->window_img, i, start_y, rgba);
 		start_y++;
 	}
 }
@@ -83,12 +99,12 @@ static void	collision_bucle(t_cub *g, t_ray *ray)
 void	ray_casting(t_cub *g, t_ray *ray)
 {
 	int		i;
-	double	r_fov;
+	//double	r_fov;
 	double	ang;
 	double	start;
 
 	i = 0;
-	r_fov = FOV * N_PI / 180;
+	//r_fov = FOV * N_PI / 180;
 	ang = (FOV / W_WIDTH) * N_PI / 180;
 	start = g->player->r_view - (ang * (W_WIDTH / 2));
 	while (i < W_WIDTH)
