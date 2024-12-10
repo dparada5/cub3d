@@ -90,11 +90,9 @@ void	ft_check_map(t_cub *game)
 				check_char(game, game->map[y][x], game->map[y - 1][x]);
 				if (game->map[y] && game->map[y + 1])
 					check_char(game, game->map[y][x], game->map[y + 1][x]);
-				}
 			}
 		}
 	}
 	change_spaces(game);
 	count_players(game);
-	print_matrix(game->map);
 }
