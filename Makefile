@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/20 12:19:55 by dparada           #+#    #+#              #
-#    Updated: 2024/12/10 10:45:14 by dparada          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC 		= clang
 NAME 	= cub3D
 USER 	= dparada
@@ -32,7 +20,8 @@ CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete save_memory
+SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete save_memory\
+			init_mlx_game set_moves put_textures ray_casting
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))

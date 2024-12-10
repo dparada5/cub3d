@@ -64,8 +64,8 @@ static t_colors	*save_colors(t_cub *game, char **matrix)
 	if (!aux)
 		ft_msj_error(game, 1, "Malloc failed.");
 	aux->red = check_colors(game, matrix[0]);
-	aux->blue = check_colors(game, matrix[1]);
-	aux->yellow = check_colors(game, matrix[2]);
+	aux->green = check_colors(game, matrix[1]);
+	aux->blue = check_colors(game, matrix[2]);
 	return (aux);
 }
 

@@ -1,4 +1,3 @@
-
 #include "../Include/cub3D.h"
 //sacar el punto extra que es para diferenciar el msj
 static int	check_valid_walls(t_cub *game, int y, int x)
@@ -59,6 +58,7 @@ static void	count_players(t_cub *game)
 				game->player->x = x;
 				game->player->y = y;
 				game->player->view = game->map[y][x];
+				game->player->r_view = get_radian(game->map[y][x]);
 				game->n_player++;
 			}
 		}

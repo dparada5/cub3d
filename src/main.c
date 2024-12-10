@@ -3,7 +3,7 @@
 
 void	ft_init_game(t_cub *game)
 {
-	game->mlx = mlx_init(1000, 1000, "cub3D", false);
+	game->mlx = mlx_init(W_WIDTH, W_HEIGHT, "cub3D", false);
 	if (!game->mlx)
 		ft_msj_error(game, 1, NULL);
 	game->coor = malloc_coor(game);
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	ft_maps(game, NULL, NULL, NULL);
 	ft_check_map(game);
 	open_textures(game);
-	ft_printf("all good\n");
+	init_mlx_game(game);
 	free_game(game);
 	return (0);
 }
