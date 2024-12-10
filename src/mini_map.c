@@ -49,26 +49,52 @@ static void	put_map_background(t_cub *g)
 	}
 }
 
-static void	put_walls(t_cub *g, t_minimap *mini_map, int start_y, int start_x)
-{
-	int	real_y;
-	int	real_x;
-	int	map_y;
-	int	map_x;
+// static void	put_walls(t_cub *g, t_minimap *mini_map, int start_y, int start_x)
+// {
+// 	int	real_y;
+// 	int	real_x;
+// 	int	map_y;
+// 	int	map_x;
 
-	map_y = start_y;
-	while (map_y < g->mini_map->end_y)
+// 	map_y = start_y;
+// 	while (map_y < g->mini_map->end_y)
+// 	{
+// 		map_x = start_x;
+// 		while (map_x < g->mini_map->end_x)
+// 		{
+// 			real_y = (map_y - mini_map->start_y) / mini_map->pixel_size;
+// 			real_x = (map_x - mini_map->start_x) / mini_map->pixel_size;
+// 			if (g->map[real_y][real_x] == '1')
+// 				mlx_put_pixel(g->window_img, map_x, map_y, get_rgba(230, 0, 100, 255));
+// 			map_x++;
+// 		}
+// 		map_y++;
+// 	}
+// }
+
+static void	put_walls(t_cub *g, t_minimap *m_map, int player_x, int player_y)
+{
+	int	start_y = player_y;
+	int	paint_y = m_map->height / 2;
+	//int	line_len;
+
+	while (start_y > 0 && paint_y > 0)
 	{
-		map_x = start_x;
-		while (map_x < g->mini_map->end_x)
+		//line_len = ft_strlen(g->map[start_y]);
+		int	paint_x = m_map->width / 2;
+		int	start_x = player_x;
+		while (start_x > 0 && paint_x > 0)
 		{
-			real_y = (map_y - mini_map->start_y) / mini_map->pixel_size;
-			real_x = (map_x - mini_map->start_x) / mini_map->pixel_size;
-			if (g->map[real_y][real_x] == '1')
-				mlx_put_pixel(g->window_img, map_x, map_y, get_rgba(230, 0, 100, 255));
-			map_x++;
+			if (g->map[start_y][start_x] == '1')
+			{
+				printf("entra %d\n", m_map->start_y);
+				mlx_put_pixel(g->window_img, paint_x, paint_y, get_rgba(230, 255, 100, 255));
+			}
+			start_x--;
+			paint_x--;
 		}
-		map_y++;
+		paint_y--;
+		start_y--;
 	}
 }
 
@@ -78,6 +104,7 @@ void	mini_map(void *param)
 
 	g = (t_cub *)param;
 	put_map_background(g);
-	put_walls(g, g->mini_map, g->mini_map->start_y, g->mini_map->start_x);
+	//put_walls(g, g->mini_map, g->mini_map->start_y, g->mini_map->start_x);
+	put_walls(g, g->mini_map, g->player->x, g->player->y);
 	put_player(g);
 }
