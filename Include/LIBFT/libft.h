@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:17:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/05 14:58:21 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:08:35 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include <aio.h>
+#include <stddef.h>
 
 typedef struct s_list
 {
@@ -93,7 +95,7 @@ int		ft_check(char const *str, va_list parametros, int total);
 int		ft_check_hexa(char const *str, va_list parametros);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
-int		ft_hexa(unsigned long nb, char word);
+int		ft_hexa(long long int nb, char word);
 int		ft_digit_p(long n);
 int		ft_digit_u(long n);
 int		ft_punt(void *nb);

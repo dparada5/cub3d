@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:01:06 by dparada           #+#    #+#             */
-/*   Updated: 2023/12/21 16:13:01 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:08:04 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_convert_he(unsigned long nb, char *base)
 	i = ft_strdiv(nb);
 	ptr = malloc(i + 1);
 	i = 0;
-	if (nn < 16 && nn >= 0)
+	if (nn < 16)
 		ptr[i++] = base[nn];
 	else
 	{
@@ -65,7 +65,7 @@ char	*ft_convert_he(unsigned long nb, char *base)
 	return (s);
 }
 
-int	ft_hexa(unsigned long nb, char word)
+int	ft_hexa(long long int nb, char word)
 {
 	char	*low;
 	char	*upper;

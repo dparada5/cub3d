@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:50:56 by dparada           #+#    #+#             */
-/*   Updated: 2023/12/07 14:46:48 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:04:30 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_calloc_gnl(size_t count, size_t size)
 	i = 0;
 	n = (count * size);
 	punt = malloc(n);
-	if (punt == NULL || punt < 0)
+	if (punt == NULL)
 		return (NULL);
 	while (i < n)
 	{

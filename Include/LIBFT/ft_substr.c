@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/12 14:05:04 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:03:31 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = start;
 	n = 0;
-	if (ft_strlen(s) == 0 || len < 0 || start < 0 || start > ft_strlen(s))
+	if (ft_strlen(s) == 0 || start > ft_strlen(s))
 		return ((char *)ft_calloc(1, 1));
 	while (s[i] && n < len)
 	{

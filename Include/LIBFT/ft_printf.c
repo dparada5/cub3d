@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:43:28 by dparada           #+#    #+#             */
-/*   Updated: 2023/12/21 16:13:53 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:06:26 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 int	ft_check(char const *str, va_list parametros, int total)
 {
 	int		i;
-	char	word;
 	char	*ptr;
 
 	i = 0;
-	word = str[i];
 	if (str[i] == '%')
 		total += ft_putchar('%');
 	else if (str[i] == 'c')

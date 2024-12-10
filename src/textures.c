@@ -54,10 +54,8 @@ static int	check_colors(t_cub *game, char *str)
 
 static t_colors	*save_colors(t_cub *game, char **matrix)
 {
-	int			i;
 	t_colors	*aux;
 
-	i = -1;
 	if (ft_strlen_matrix(matrix) != 3)
 		ft_msj_error(game, 1, "Not valid number of colors.");
 	aux = malloc(sizeof(t_colors));
@@ -71,10 +69,8 @@ static t_colors	*save_colors(t_cub *game, char **matrix)
 
 void	open_textures(t_cub *game)
 {
-	int		i;
 	char	**aux;
 
-	i = 0;
 	aux = NULL;
 	if (!check_line(game, 0, game->coor->north, "No path to texture.") \
 		|| !check_line(game, 0, game->coor->south, "No path to texture.") \

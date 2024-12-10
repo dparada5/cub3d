@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:52:06 by dparada           #+#    #+#             */
-/*   Updated: 2024/06/26 13:34:41 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:03:05 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s1)
 
 	i = 0;
 	punt = ((char *)malloc (sizeof(char) * ft_strlen(s1) + 1));
-	if (punt == NULL || punt < 0)
+	if (punt == NULL)
 		return (NULL);
 	while (s1[i])
 	{

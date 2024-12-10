@@ -6,12 +6,12 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 11:56:30 by dparada           #+#    #+#              #
-#    Updated: 2024/12/05 14:58:30 by dparada          ###   ########.fr        #
+#    Updated: 2024/12/10 11:56:38 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 MAGENTA = \033[35;1m

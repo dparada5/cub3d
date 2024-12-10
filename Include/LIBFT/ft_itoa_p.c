@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:21:05 by dparada           #+#    #+#             */
-/*   Updated: 2023/12/07 14:43:02 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:09:42 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ char	*ft_itoap(int n)
 {
 	char	*ptr;
 	size_t	i;
-	size_t	j;
 	long	nl;
 
 	nl = (long)n;
 	i = ft_digit_p(nl);
-	j = i;
 	ptr = malloc ((i + 1) * sizeof(char));
 	if (!ptr)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:21:26 by dparada           #+#    #+#             */
-/*   Updated: 2023/10/11 10:34:21 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:02:31 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (s1[i] == c1)
-			return ((char *)&s[i]);
+			return ((char *)&s1[i]);
 		i++;
 	}
 	return (0);

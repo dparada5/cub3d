@@ -1,4 +1,4 @@
-CC 		= clang
+CC 		= gcc
 NAME 	= cub3D
 USER 	= dparada
 CFLAGS 	= -Wall -Wextra -Werror -g -fsanitize=address
