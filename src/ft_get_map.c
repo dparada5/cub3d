@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_get_map.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 11:20:20 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/05 18:58:03 by tanselmo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../Include/cub3D.h"
 
@@ -51,8 +40,6 @@ void	ft_maps(t_cub *game, char *aux, char *result, char *prev)
 {
 	char	*line;
 
-	if (game->error_flag)
-		return ;
 	line = get_next_line(game->fd);
 	while (line)
 	{

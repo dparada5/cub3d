@@ -6,14 +6,14 @@
 #    By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:19:55 by dparada           #+#    #+#              #
-#    Updated: 2024/12/09 13:04:49 by tanselmo         ###   ########.fr        #
+#    Updated: 2024/12/10 11:30:01 by tanselmo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC 		= clang
 NAME 	= cub3D
 USER 	= dparada
-CFLAGS 	= -Wall -Wextra -Werror -g
+CFLAGS 	= -Wall -Wextra -Werror -g -fsanitize=address
 LIBFT 	= ./Include/LIBFT/libft.a
 MLX42 	= ./Include/MLX42_P2/build/libmlx42.a
 MLX_FLAGS = -Iinclude -ldl -lglfw -pthread -lm
@@ -27,12 +27,12 @@ GREEN   = \033[32;1m
 WHITE   = \033[37;1m
 RESET   = \033[0m
 GRAY 	= \033[0;90m
-BLUE    = \033[34;1mbuild
+BLUE    = \033[34;1m
 CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete \
+SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete save_memory \
 			init_mlx_game set_moves put_textures ray_casting keys distance mini_map \
 			
 

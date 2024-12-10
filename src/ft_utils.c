@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 10:08:42 by dparada           #+#    #+#             */
-/*   Updated: 2024/11/27 15:14:20 by dparada          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../Include/cub3D.h"
 
@@ -26,22 +15,24 @@ int	ft_is_all_space(char *line)
 void	open_map(t_cub *game, char *argv)
 {
 	char	*name;
+	char	*backslash;
 
-	//revisar si es legal basicamente
-	if (!ft_strcmp(argv, "Maps/.cub"))
-		ft_msj_error(game, 1, "Not valid name.");
-	name = ft_strchr(argv, '.');
+	if (argv[0] == '.')
+		ft_msj_error(game, 1, "Can't have hidden files.");
+	name = ft_strrchr(argv, '.');
+	backslash = ft_strrchr(argv, '/');
+	if (backslash && (!ft_strcmp (&backslash[1], ".cub") \
+	|| backslash[1] == '.'))
+		ft_msj_error(game, 1, "Can't have hidden files.");
 	if (ft_strcmp(name, ".cub"))
-		return (ft_msj_error(game, 1, "Incorrect map?"));
+		return (ft_msj_error(game, 1, "Incorrect extension"));
 	game->fd = open(argv, O_RDONLY);
 	if (game->fd < 0)
-		return (ft_msj_error(game, 1, "Can't open map."));
+		return (ft_msj_error(game, 1, "Can't open file."));
 }
 
 void	ft_msj_error(t_cub *game, int use, char *str)
 {
-	if (game && game->error_flag)
-		return ;
 	ft_putstr_fd("Error: ", 2);
 	ft_putendl_fd(str, 2);
 	if (!use)
@@ -54,30 +45,17 @@ void	ft_msj_error(t_cub *game, int use, char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_print_coor(t_cub *game)
+void	change_spaces(t_cub *game)
 {
-	t_coor	*aux;
+	int	y;
+	int	x;
 
-	aux = game->coor;
-	ft_putstr_fd(aux->north, 1);
-	ft_putstr_fd(aux->south, 1);
-	ft_putstr_fd(aux->west, 1);
-	ft_putstr_fd(aux->east, 1);
-	ft_putstr_fd(aux->cealing, 1);
-	ft_putstr_fd(aux->floor, 1);
-	ft_putnbr_fd(aux->n_coor, 1);
-}
-
-void	print_matrix(char **matrix)
-{
-	int	i;
-
-	i = -1;
-	if (!matrix)
-		return ;
-	while (matrix[++i])
+	y = -1;
+	while (game->map[++y])
 	{
-		ft_putstr_fd(matrix[i], 2);
-		ft_putendl_fd("-", 2);
+		x = -1;
+		while (game->map[y][++x])
+			if (game->map[y][x] == ' ')
+				game->map[y][x] = '1';
 	}
 }

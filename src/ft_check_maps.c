@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_check_maps.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 11:08:46 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/05 18:54:35 by tanselmo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../Include/cub3D.h"
 //sacar el punto extra que es para diferenciar el msj
@@ -25,15 +14,15 @@ static int	check_valid_walls(t_cub *game, int y, int x)
 	return (1);
 }
 
-static int	check_char(t_cub *game, char current, char c)
+static int	check_char(t_cub *game, char current, char next)
 {
 	if (!ft_strchr("10NSWE ", current))
-		return (ft_msj_error(game, 1, "Invalid char on map."), 0);
+		return (ft_msj_error(game, 1, "Invalid character on map."), 0);
 	else if (current == '1' || current == ' ')
 		return (1);
-	else if (current == '0' && (!ft_strchr("10NSWE", c) || !c))
+	else if (current == '0' && (!ft_strchr("10NSWE", next) || !next))
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
-	else if (ft_strchr("NSWE", current) && (!ft_strchr("10", c) || !c))
+	else if (ft_strchr("NSWE", current) && (!ft_strchr("10", next) || !next))
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
 	return (1);
 }
@@ -60,12 +49,11 @@ static void	count_players(t_cub *game)
 	int	x;
 
 	y = -1;
-	if (game->error_flag)
-		return ;
 	while (game->map[++y])
 	{
 		x = -1;
 		while (game->map[y][++x])
+		{
 			if (ft_strchr("NSWE", game->map[y][x]))
 			{
 				game->player->x = x + 0.5;
@@ -74,6 +62,7 @@ static void	count_players(t_cub *game)
 				game->player->r_view = get_radian(game->map[y][x]);
 				game->n_player++;
 			}
+		}
 	}
 	if (game->n_player != 1)
 		ft_msj_error(game, 1, "Invalid number of players.");
@@ -87,10 +76,11 @@ void	ft_check_map(t_cub *game)
 	y = -1;
 	if (!game->map)
 		return (ft_msj_error(game, 1, "There's no map."));
-	while (game->map[++y] && !game->error_flag)
+	add_spaces(game);
+	while (game->map[++y])
 	{
 		x = -1;
-		while (game->map[y][++x] && !game->error_flag)
+		while (game->map[y][++x])
 		{
 			check_valid_walls(game, y, x);
 			if (y > 0 && x > 0)
@@ -98,14 +88,12 @@ void	ft_check_map(t_cub *game)
 				check_char(game, game->map[y][x], game->map[y][x - 1]);
 				check_char(game, game->map[y][x], game->map[y][x + 1]);
 				check_char(game, game->map[y][x], game->map[y - 1][x]);
-				if (game->map[y + 1])
-				{
+				if (game->map[y] && game->map[y + 1])
 					check_char(game, game->map[y][x], game->map[y + 1][x]);
 				}
 			}
 		}
 	}
-	add_spaces(game);
 	change_spaces(game);
 	count_players(game);
 	print_matrix(game->map);
