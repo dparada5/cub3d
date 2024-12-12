@@ -15,6 +15,7 @@
 # define ANG_MOVE 0.0174533
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
+# define PIXEL 64
 
 typedef struct s_minimap
 {
@@ -34,6 +35,7 @@ typedef	struct	s_colors
 	int	red;
 	int	green;
 	int	blue;
+	int	alpha;
 }				t_colors;
 
 typedef struct	s_player
@@ -52,6 +54,8 @@ typedef struct s_ray
 	double	distance;
 	double	col_x; // POSICION DE COLISION X / Y
 	double	col_y;
+	double	start_y;
+	double	end_y;
 
 	// DDA
 	double	side_dist_x; // Distancia entre intersecciones en el eje x
@@ -119,7 +123,7 @@ void	key_left_right(t_cub *g, mlx_key_data_t key);
 //---------------------------PUT TEXTURES-----------------
 void	put_textures(t_cub *g);
 int		get_rgba(int r, int g, int b, int a);
-
+void	paint_texture(t_cub *g, t_ray *ray, mlx_texture_t *txt, double wall_h);
 //---------------------------UTILS------------------------
 void	ft_msj_error(t_cub *game, int use, char *str);
 int		ft_is_all_space(char *line);
