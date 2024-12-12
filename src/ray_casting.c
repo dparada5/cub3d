@@ -16,21 +16,18 @@ static void	create_walls(t_cub *g, t_ray *ray, int i)
 {
 	double	distance_corrected;
 	int		wall_height;
-	double	start_y;
-	double	end_y;
 	int		rgba;
-
-	rgba = get_rgba(39, 168, 54, 255);
+	
 	distance_corrected = (ray->distance * cos(ray->ang - g->player->r_view));
+	ray->start_y = W_HEIGHT / 2 - (W_HEIGHT / (2 * distance_corrected));
+	ray->end_y = W_HEIGHT / 2 + (W_HEIGHT / (2 * distance_corrected));
 	wall_height = (W_HEIGHT / distance_corrected);
 	if (wall_height > W_HEIGHT)
 		wall_height = W_HEIGHT;
-	start_y = W_HEIGHT / 2 - (W_HEIGHT / (2 * distance_corrected));
-	end_y = W_HEIGHT / 2 + (W_HEIGHT / (2 * distance_corrected));
-	if (start_y < 0)
-		start_y = 0;
-	if (end_y >= W_HEIGHT)
-		end_y = W_HEIGHT - 1;
+	if (ray->start_y < 0)
+		ray->start_y = 0;
+	if (ray->end_y >= W_HEIGHT)
+		ray->end_y = W_HEIGHT - 1;
 	if (ray->side == 0)
 	{
 		if (ray->cos > 0) // east
@@ -45,10 +42,10 @@ static void	create_walls(t_cub *g, t_ray *ray, int i)
 		else // north
 			rgba = get_rgba(255, 0, 0, 255);
 	}
-	while (start_y <= end_y)
+	while (ray->start_y <= ray->end_y)
 	{
-		mlx_put_pixel(g->window_img, i, start_y, rgba);
-		start_y++;
+		mlx_put_pixel(g->window_img, i, ray->start_y, rgba);
+		ray->start_y++;
 	}
 }
 
