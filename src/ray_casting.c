@@ -17,7 +17,7 @@ static void	create_walls(t_cub *g, t_ray *ray, int i)
 	double	distance_corrected;
 	int		wall_height;
 	int		rgba;
-	
+
 	distance_corrected = (ray->distance * cos(ray->ang - g->player->r_view));
 	ray->start_y = W_HEIGHT / 2 - (W_HEIGHT / (2 * distance_corrected));
 	ray->end_y = W_HEIGHT / 2 + (W_HEIGHT / (2 * distance_corrected));
@@ -96,12 +96,10 @@ static void	collision_bucle(t_cub *g, t_ray *ray)
 void	ray_casting(t_cub *g, t_ray *ray)
 {
 	int		i;
-	//double	r_fov;
 	double	ang;
 	double	start;
 
 	i = 0;
-	//r_fov = FOV * N_PI / 180;
 	ang = (FOV / W_WIDTH) * N_PI / 180;
 	start = g->player->r_view - (ang * (W_WIDTH / 2));
 	while (i < W_WIDTH)

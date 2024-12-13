@@ -1,18 +1,11 @@
--Ver variables en estructura s_ray
-
--Ver de agregar la estructura del s_player con informacion necesaria para el ray casting como:
-posicion
-hacia donde mira
-definir el fov(field of view(campo de vision xd))
-
--Comenzar a calcular las distancias hacia los muros
-
--Ray casting info
-https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/
-
-
 -delfii
 
 - descargar xpm
 - pasar a xpm42 con un script de la mlx
 - ya esta listo para tobi
+
+TEXTURAS:
+
+-Sabemos donde colisiona el rayo en X y en Y, gracias a la variable col_x col_y.
+
+

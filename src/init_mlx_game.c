@@ -36,11 +36,27 @@ static void	init_minimap(t_cub *g)
 	g->mini_map->pixel_size = g->mini_map->width / 20;
 }
 
+// static void	init_animations(t_cub *g)
+// {
+// 	mlx_texture_t	animations[ANIMATIONS];
+
+	
+// }
+
+// static void	animation(void *param)
+// {
+// 	t_cub	*g;
+
+// 	g = (t_cub *)param;
+	
+// }
+
 void	init_mlx_game(t_cub *game)
 {
 	t_ray	ray[W_WIDTH];
 
 	init_minimap(game);
+	//init_animations(game);
 	game->ray = ray;
 	game->window_img = mlx_new_image(game->mlx, W_WIDTH, W_HEIGHT);
 	put_textures(game);
@@ -48,6 +64,7 @@ void	init_mlx_game(t_cub *game)
 	mlx_key_hook(game->mlx, &set_moves, game);
 	mlx_loop_hook(game->mlx, &mouse_cam, game);
 	ray_casting(game, ray);
+	//mlx_loop_hook(game->mlx, &animation, game);
 	//mlx_loop_hook(game->mlx, &mini_map, game);
 	mlx_loop(game->mlx);
 }

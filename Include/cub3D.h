@@ -16,6 +16,17 @@
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
 # define PIXEL 64
+# define ANIMATIONS 7
+# define DELAY 10
+
+typedef struct s_animation
+{
+	mlx_texture_t	*frames[ANIMATIONS];
+	int				curr_frame;
+	int				frame_counter;
+	int				x;
+	int				y;
+}				t_animation;
 
 typedef struct s_minimap
 {
