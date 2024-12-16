@@ -2,7 +2,7 @@
 CC 		= clang
 NAME 	= cub3D
 USER 	= dparada
-CFLAGS 	= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS 	= -Wall -Wextra -Werror -g #-fsanitize=address
 LIBFT 	= ./Include/LIBFT/libft.a
 MLX42 	= ./Include/MLX42_P2/build/libmlx42.a
 MLX_FLAGS = -Iinclude -ldl -lglfw -pthread -lm
@@ -23,7 +23,7 @@ RED		= \033[31;1m
 
 SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures maybe_delete save_memory \
 			init_mlx_game set_moves put_textures ray_casting keys distance mini_map \
-			paint_textures \
+			paint_textures animations \
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))

@@ -5,6 +5,7 @@
 # include "LIBFT/libft.h"
 # include "MLX42_P2/include/MLX42/MLX42.h"
 # include <math.h>
+# include <sys/time.h>
 //estructura de texturas
 //estructura de coordenadas?build
 
@@ -17,15 +18,15 @@
 # define N_PI_2 1.57079632679
 # define PIXEL 64
 # define ANIMATIONS 7
-# define DELAY 10
+# define ANIM_SIZE 500
+# define DELAY 100
 
 typedef struct s_animation
 {
 	mlx_texture_t	*frames[ANIMATIONS];
-	int				curr_frame;
-	int				frame_counter;
-	int				x;
-	int				y;
+	mlx_image_t		*img;
+	int				current_frame;
+	int				last_time;
 }				t_animation;
 
 typedef struct s_minimap
@@ -41,7 +42,7 @@ typedef struct s_minimap
 	int	offset_x;
 }				t_minimap;
 
-typedef	struct	s_colors
+typedef struct s_colors
 {
 	int	red;
 	int	green;
@@ -49,7 +50,7 @@ typedef	struct	s_colors
 	int	alpha;
 }				t_colors;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	double	x;
 	double	y;
@@ -63,12 +64,10 @@ typedef struct s_ray
 	double	sin;
 	double	cos;
 	double	distance;
-	double	col_x; // POSICION DE COLISION X / Y
+	double	col_x;
 	double	col_y;
 	double	start_y;
 	double	end_y;
-
-	// DDA
 	double	side_dist_x; // Distancia entre intersecciones en el eje x
 	double	side_dist_y; // Distancia entre intersecciones en el eje y
 	double	delta_dist_x; // Distancia inicial al primer lado en x
@@ -81,15 +80,15 @@ typedef struct s_ray
 typedef struct s_coor
 {
 	//agregar texturas
-	char	*north;//convertir en matrix? o ni?
-	char	*south;
-	char	*west;
-	char	*east;
-	char	*floor;
-	char	*cealing;//se escribe asi? no, ceiling
-	int		n_coor;
-	t_colors	*t_floor;//liberar memoria
-	t_colors	*t_ceiling;//liberar memoria
+	char			*north;//convertir en matrix? o ni?
+	char			*south;
+	char			*west;
+	char			*east;
+	char			*floor;
+	char			*cealing;//se escribe asi? no, ceiling
+	int				n_coor;
+	t_colors		*t_floor;//liberar memoria
+	t_colors		*t_ceiling;//liberar memoria
 	mlx_texture_t	*north_i;
 	mlx_texture_t	*south_i;
 	mlx_texture_t	*west_i;
@@ -110,7 +109,14 @@ typedef struct s_cub
 	t_player	*player;
 	t_coor		*coor;
 	t_minimap	*mini_map;
+	t_animation	*anim;
 }			t_cub;
+
+//---------------------------BONUS------------------------
+void	mini_map(void *g);
+void	init_animations(t_cub *g);
+void	update_animation(void *param);
+int		get_time(void);
 
 //---------------------------RAY CASTING------------------
 double	get_radian(int c);
@@ -118,7 +124,6 @@ void	ray_casting(t_cub *g, t_ray *ray);
 
 //---------------------------INIT MLX GAME----------------
 void	init_mlx_game(t_cub *game);
-void	mini_map(void *g);
 //---------------------------MOVES------------------------
 void	set_moves(mlx_key_data_t key, void *param);
 
