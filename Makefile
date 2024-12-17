@@ -1,7 +1,7 @@
 CC 		= gcc
 NAME 	= cub3D
 USER 	= dparada
-CFLAGS 	= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS 	= -Wall -Wextra -Werror -g
 LIBFT 	= ./Include/LIBFT/libft.a
 MLX42 	= ./Include/MLX42_P2/build/libmlx42.a
 MLX_FLAGS = -Iinclude -ldl -lglfw -pthread -lm

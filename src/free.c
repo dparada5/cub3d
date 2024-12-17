@@ -50,6 +50,8 @@ void	free_game(t_cub *game)
 			free(game->player);
 		if (game->fd != -1)
 			close(game->fd);
+		if (game->mini_map)
+			free(game->mini_map);
 		mlx_terminate(game->mlx);
 		free(game);
 	}
