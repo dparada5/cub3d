@@ -46,6 +46,6 @@ void	update_animation(void *param)
 		if (!g->anim->img)
 			ft_msj_error(g, 1, "ERROR: No se pudo actualizar la imagen");
 		mlx_image_to_window(g->mlx, g->anim->img,
-			W_WIDTH * 0.6, W_HEIGHT - (ANIM_SIZE * 0.7));
+			W_WIDTH * 0.5, W_HEIGHT - (ANIM_SIZE * 0.7));
 	}
 }

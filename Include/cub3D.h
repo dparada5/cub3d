@@ -75,6 +75,9 @@ typedef struct s_ray
 	int		step_x; // Direccion de avance en x (1 o -1)
 	int		step_y; // Direccion de avance en y (1 o -1)
 	int		side;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
 }	t_ray;
 
 typedef struct s_coor
