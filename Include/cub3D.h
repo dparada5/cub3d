@@ -78,6 +78,7 @@ typedef struct s_ray
 	double	wall_x;
 	int		tex_x;
 	int		tex_y;
+	int		index;
 }	t_ray;
 
 typedef struct s_coor
@@ -139,10 +140,11 @@ void	key_s(t_cub *g);
 void	key_a(t_cub *g);
 void	key_d(t_cub *g);
 void	key_left_right(t_cub *g, mlx_key_data_t key);
-//---------------------------PUT TEXTURES-----------------
+//---------------------------TEXTURES---------------------
 void	put_textures(t_cub *g);
 int		get_rgba(int r, int g, int b, int a);
-void	paint_texture(t_cub *g, t_ray *ray, mlx_texture_t *txt, double wall_h);
+void	paint_texture(t_cub *g, t_ray *ray, mlx_texture_t *curr, int wall_h);
+void	create_walls(t_cub *g, t_ray *ray, int i);
 //---------------------------UTILS------------------------
 void	ft_msj_error(t_cub *game, int use, char *str);
 int		ft_is_all_space(char *line);
