@@ -14,12 +14,26 @@ void	init_animations(t_cub *g)
 	if (!g->anim)
 		ft_msj_error(g, 1, "Malloc failed");
 	g->anim->frames[0] = mlx_load_png("Animation/Torch_0.png");
+	if (!g->anim->frames[0])
+		ft_msj_error(g, 1, "Failed to load image");
 	g->anim->frames[1] = mlx_load_png("Animation/Torch_1.png");
+	if (!g->anim->frames[1])
+		ft_msj_error(g, 1, "Failed to load image");
 	g->anim->frames[2] = mlx_load_png("Animation/Torch_2.png");
+	if (!g->anim->frames[2])
+		ft_msj_error(g, 1, "Failed to load image");
 	g->anim->frames[3] = mlx_load_png("Animation/Torch_3.png");
+	if (!g->anim->frames[3])
+		ft_msj_error(g, 1, "Failed to load image");
 	g->anim->frames[4] = mlx_load_png("Animation/Torch_4.png");
+	if (!g->anim->frames[4])
+		ft_msj_error(g, 1, "Failed to load image");
 	g->anim->frames[5] = mlx_load_png("Animation/Torch_5.png");
+	if (!g->anim->frames[5])
+		ft_msj_error(g, 1, "Failed to load image");
 	g->anim->frames[6] = mlx_load_png("Animation/Torch_6.png");
+	if (!g->anim->frames[6])
+		ft_msj_error(g, 1, "Failed to load image");
 	g->anim->img = mlx_texture_to_image(g->mlx, g->anim->frames[0]);
 	if (!g->anim->img)
 		ft_msj_error(g, 1, "Malloc failed");
