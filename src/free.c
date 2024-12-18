@@ -38,6 +38,20 @@ void	free_coor(t_coor *coor)
 		free(coor);
 }
 
+static void	free_anim(t_animation *anim)
+{
+	int	i;
+
+	i = 0;
+	while (i < ANIMATIONS)
+	{
+		if (anim->frames[i])
+			mlx_delete_texture(anim->frames[i]);
+		i++;
+	}
+	free(anim);
+}
+
 void	free_game(t_cub *game)
 {
 	if (game)
@@ -52,6 +66,8 @@ void	free_game(t_cub *game)
 			close(game->fd);
 		if (game->mini_map)
 			free(game->mini_map);
+		if (game->anim)
+			free_anim(game->anim);
 		mlx_terminate(game->mlx);
 		free(game);
 	}
