@@ -5,15 +5,15 @@ void	key_w(t_cub *g)
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y + P_MOVE * sin(g->player->r_view);
-	new_x = g->player->x + P_MOVE * cos(g->player->r_view);
+	new_y = g->player->y + (P_MOVE * 2) * sin(g->player->r_view);
+	new_x = g->player->x + (P_MOVE * 2) * cos(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1')
 	{
 		if (g->map[(int)new_y][(int)g->player->x] != '1'
 			&& g->map[(int)g->player->y][(int)new_x] != '1')
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y + P_MOVE * sin(g->player->r_view);
+			g->player->x = g->player->x + P_MOVE * cos(g->player->r_view);
 		}
 	}
 }
@@ -23,15 +23,15 @@ void	key_s(t_cub *g)
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y - P_MOVE * sin(g->player->r_view);
-	new_x = g->player->x - P_MOVE * cos(g->player->r_view);
+	new_y = g->player->y - (P_MOVE * 2) * sin(g->player->r_view);
+	new_x = g->player->x - (P_MOVE * 2) * cos(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1')
 	{
 		if (g->map[(int)new_y][(int)g->player->x] != '1'
 			&& g->map[(int)g->player->y][(int)new_x] != '1')
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y - P_MOVE * sin(g->player->r_view);
+			g->player->x = g->player->x - P_MOVE * cos(g->player->r_view);
 		}
 	}
 }
@@ -41,15 +41,15 @@ void	key_a(t_cub *g)
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y - P_MOVE * cos(g->player->r_view);
-	new_x = g->player->x + P_MOVE * sin(g->player->r_view);
+	new_y = g->player->y - (P_MOVE * 2) * cos(g->player->r_view);
+	new_x = g->player->x + (P_MOVE * 2) * sin(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1')
 	{
 		if (g->map[(int)new_y][(int)g->player->x] != '1'
 			&& g->map[(int)g->player->y][(int)new_x] != '1')
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y - P_MOVE * cos(g->player->r_view);
+			g->player->x = g->player->x + P_MOVE * sin(g->player->r_view);
 		}
 	}
 }
@@ -59,15 +59,15 @@ void	key_d(t_cub *g)
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y + P_MOVE * cos(g->player->r_view);
-	new_x = g->player->x - P_MOVE * sin(g->player->r_view);
+	new_y = g->player->y + (P_MOVE * 2) * cos(g->player->r_view);
+	new_x = g->player->x - (P_MOVE * 2) * sin(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1')
 	{
 		if (g->map[(int)new_y][(int)g->player->x] != '1'
 			&& g->map[(int)g->player->y][(int)new_x] != '1')
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y + P_MOVE * cos(g->player->r_view);
+			g->player->x = g->player->x - P_MOVE * sin(g->player->r_view);
 		}
 	}
 }

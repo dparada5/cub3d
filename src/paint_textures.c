@@ -70,8 +70,8 @@ void	create_walls(t_cub *g, t_ray *ray, int i)
 	wall_height = (int)(W_HEIGHT / distance_corrected);
 	ray->start_y = (W_HEIGHT / 2) - (wall_height / 2);
 	ray->end_y = (W_HEIGHT / 2) + (wall_height / 2);
-	if (ray->end_y >= W_HEIGHT)
-		ray->end_y = W_HEIGHT - 1;
+	if (ray->end_y > W_HEIGHT)
+		ray->end_y = W_HEIGHT;
 	current = set_texture(g, ray);
 	ray->tex_x = (int)(ray->wall_x * current->width);
 	if ((ray->side == 0 && ray->cos < 0) || (ray->side == 1 && ray->sin > 0))

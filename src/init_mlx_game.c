@@ -27,13 +27,13 @@ static void	mouse_cam(void *param)
 
 static void	init_minimap(t_cub *g)
 {
-	g->mini_map->start_x = W_WIDTH / 65;
-	g->mini_map->start_y = W_HEIGHT - (W_HEIGHT / 4);
+	g->mini_map->start_x = 0;
+	g->mini_map->start_y = 0;
 	g->mini_map->width = W_WIDTH / 4;
 	g->mini_map->height = W_HEIGHT / 4;
-	g->mini_map->end_x = g->mini_map->start_x + g->mini_map->width;
-	g->mini_map->end_y = g->mini_map->start_y + g->mini_map->height - W_WIDTH / 65;
-	g->mini_map->pixel_size = g->mini_map->width / 20;
+	g->mini_map->end_x = g->mini_map->width;
+	g->mini_map->end_y = g->mini_map->height;
+	g->mini_map->pixel_size = g->mini_map->width * 0.1;
 }
 
 void	init_mlx_game(t_cub *game)

@@ -1,18 +1,19 @@
-NO Textures/bruja.png
+NO Textures/wall_1.png
 
-SO Textures/calabaza.png
+SO Textures/wall_2.png
 
-WE Textures/fantasmita.png
+WE Textures/wall_3.png
 
-EA Textures/murcielagos.png
+EA Textures/wall_4.png
 
-F 167,167,167
-C 145,255,243
+F 95,60,35
+C 54,54,54
+
 1111
 11111111111
 111000100001
 11100001001
-100N000001
 1000000001
-1000000001
+10000100N1
+1000001001
 1111111111
