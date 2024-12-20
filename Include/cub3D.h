@@ -5,6 +5,7 @@
 # include "LIBFT/libft.h"
 # include "MLX42_P2/include/MLX42/MLX42.h"
 # include <math.h>
+# include <sys/time.h>
 //estructura de texturas
 //estructura de coordenadas?build
 
@@ -15,6 +16,18 @@
 # define ANG_MOVE 0.0174533
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
+# define PIXEL 64
+# define ANIMATIONS 7
+# define ANIM_SIZE 500
+# define DELAY 100
+
+typedef struct s_animation
+{
+	mlx_texture_t	*frames[ANIMATIONS];
+	mlx_image_t		*img;
+	int				current_frame;
+	int				last_time;
+}				t_animation;
 
 typedef struct s_minimap
 {
@@ -29,14 +42,15 @@ typedef struct s_minimap
 	int	offset_x;
 }				t_minimap;
 
-typedef	struct	s_colors
+typedef struct s_colors
 {
 	int	red;
 	int	green;
 	int	blue;
+	int	alpha;
 }				t_colors;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	double	x;
 	double	y;
@@ -50,10 +64,10 @@ typedef struct s_ray
 	double	sin;
 	double	cos;
 	double	distance;
-	double	col_x; // POSICION DE COLISION X / Y
+	double	col_x;
 	double	col_y;
-
-	// DDA
+	double	start_y;
+	double	end_y;
 	double	side_dist_x; // Distancia entre intersecciones en el eje x
 	double	side_dist_y; // Distancia entre intersecciones en el eje y
 	double	delta_dist_x; // Distancia inicial al primer lado en x
@@ -61,24 +75,30 @@ typedef struct s_ray
 	int		step_x; // Direccion de avance en x (1 o -1)
 	int		step_y; // Direccion de avance en y (1 o -1)
 	int		side;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	int		index;
+	bool	door;
 }	t_ray;
 
 typedef struct s_coor
 {
-	//agregar texturas
-	char	*north;//convertir en matrix? o ni?
-	char	*south;
-	char	*west;
-	char	*east;
-	char	*floor;
-	char	*cealing;//se escribe asi? no, ceiling
-	int		n_coor;
-	t_colors	*t_floor;//liberar memoria
-	t_colors	*t_ceiling;//liberar memoria
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	char			*floor;
+	char			*ceiling;
+	char			*door;
+	int				n_coor;
+	t_colors		*t_floor;
+	t_colors		*t_ceiling;
 	mlx_texture_t	*north_i;
 	mlx_texture_t	*south_i;
 	mlx_texture_t	*west_i;
 	mlx_texture_t	*east_i;
+	mlx_texture_t	*door_i;
 }				t_coor;
 
 typedef struct s_cub
@@ -91,11 +111,19 @@ typedef struct s_cub
 	int			error_flag;
 	int			start_map;
 	int			n_player;
+	int			open;
 	t_ray		*ray;
 	t_player	*player;
 	t_coor		*coor;
 	t_minimap	*mini_map;
+	t_animation	*anim;
 }			t_cub;
+
+//---------------------------BONUS------------------------
+void	mini_map(void *g);
+void	init_animations(t_cub *g);
+void	update_animation(void *param);
+int		get_time(void);
 
 //---------------------------RAY CASTING------------------
 double	get_radian(int c);
@@ -103,38 +131,49 @@ void	ray_casting(t_cub *g, t_ray *ray);
 
 //---------------------------INIT MLX GAME----------------
 void	init_mlx_game(t_cub *game);
-void	mini_map(void *g);
+
 //---------------------------MOVES------------------------
 void	set_moves(mlx_key_data_t key, void *param);
 
 //---------------------------DISTANCE---------------------
 void	set_distance(t_cub *g, t_ray *ray);
 double	calculate_distance(t_cub *g, t_ray *ray, int map_x, int map_y);
+
 //---------------------------KEYS-------------------------
 void	key_w(t_cub *g);
 void	key_s(t_cub *g);
 void	key_a(t_cub *g);
 void	key_d(t_cub *g);
 void	key_left_right(t_cub *g, mlx_key_data_t key);
-//---------------------------PUT TEXTURES-----------------
+
+//---------------------------TEXTURES---------------------
+void	open_textures(t_cub *game);
 void	put_textures(t_cub *g);
 int		get_rgba(int r, int g, int b, int a);
+void	paint_texture(t_cub *g, t_ray *ray, mlx_texture_t *curr, int wall_h);
+void	create_walls(t_cub *g, t_ray *ray, int i);
 
 //---------------------------UTILS------------------------
 void	ft_msj_error(t_cub *game, int use, char *str);
 int		ft_is_all_space(char *line);
 void	open_map(t_cub *game, char *argv);
 void	change_spaces(t_cub *game);
+
 //--------------------------MAPS--------------------------
 void	ft_check_map(t_cub *game);
 void	ft_maps(t_cub *game, char *aux, char *result, char *prev);
-//--------------------------TEXTURES----------------------
-void	open_textures(t_cub *game);
+
 //--------------------------FREE--------------------------
 void	free_game(t_cub *game);
-//--------------------------MALLOC--------------------------
+
+//--------------------------MALLOC------------------------
 t_coor	*malloc_coor(t_cub *game);
+
+//--------------------------DOOR--------------------------
+void	open_door(t_cub *g);
+void	check_valid_door(t_cub *g, char **map, int x, int y);
 //--------------------------DELETE------------------------
 void	printf_player(t_cub *game);
 void	printf_coor(t_coor *coor);
+
 #endif

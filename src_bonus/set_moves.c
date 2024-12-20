@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:38:17 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:38:19 by dparada          ###   ########.fr       */
+/*   Created: 2024/12/20 15:41:18 by dparada           #+#    #+#             */
+/*   Updated: 2024/12/20 15:41:20 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ void	set_moves(mlx_key_data_t key, void *param)
 			|| key.key == MLX_KEY_LEFT || key.key == MLX_KEY_RIGHT)
 		&& (key.action == MLX_REPEAT || key.action == MLX_PRESS))
 		make_move((t_cub *)param, key);
+	if (key.key == MLX_KEY_O && key.action == MLX_PRESS)
+		open_door((t_cub *)param);
 }

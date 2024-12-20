@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:38:03 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:38:04 by dparada          ###   ########.fr       */
+/*   Created: 2024/12/20 15:41:13 by dparada           #+#    #+#             */
+/*   Updated: 2024/12/20 18:14:11 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ t_coor	*malloc_coor(t_cub *game)
 	coor->door_i = NULL;
 	coor->t_ceiling = NULL;
 	coor->t_floor = NULL;
-	coor->is_door = 0;
 	return (coor);
 }
