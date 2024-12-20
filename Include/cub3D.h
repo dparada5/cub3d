@@ -103,6 +103,8 @@ typedef struct s_cub
 {
 	mlx_t		*mlx;
 	mlx_image_t	*window_img;
+	mlx_image_t	*map_img;
+	mlx_image_t	*mini_img;
 	int			fd;
 	char		**map;
 	int			map_len;
@@ -118,6 +120,11 @@ typedef struct s_cub
 
 //---------------------------BONUS------------------------
 void	mini_map(void *g);
+void	put_map_background(t_cub *g);
+void	put_player(t_cub *g);
+void	paint_wall(int color, t_cub *g, int pos_x, int pos_y);
+void	put_walls(t_cub *g);
+
 void	init_animations(t_cub *g);
 void	update_animation(void *param);
 int		get_time(void);
