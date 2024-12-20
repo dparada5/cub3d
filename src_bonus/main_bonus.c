@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:21 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:40:22 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/20 18:29:17 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_init_game(t_cub *game)
 	game->n_player = 0;
 	game->fd = -1;
 	game->open = 0;
+	game->anim = NULL;
 	game->mini_map = malloc(sizeof(t_minimap));
 	if (!game->mini_map)
 		ft_msj_error(game, 1, "Malloc failed.");
@@ -39,6 +40,7 @@ int	main(int argc, char **argv)
 	game = malloc(sizeof(t_cub));
 	if (!game)
 		return (1);
+	//recordar hacer un cub3D.h bonus
 	ft_init_game(game);
 	open_map(game, argv[1]);
 	ft_maps(game, NULL, NULL, NULL);

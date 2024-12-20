@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:37:31 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:37:33 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/20 18:25:57 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_init_game(t_cub *game)
 	game->n_player = 0;
 	game->fd = -1;
 	game->open = 0;
+	game->anim = NULL;
 	game->mini_map = malloc(sizeof(t_minimap));
 	if (!game->mini_map)
 		ft_msj_error(game, 1, "Malloc failed.");
