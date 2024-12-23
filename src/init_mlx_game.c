@@ -67,6 +67,11 @@ void	init_mlx_game(t_cub *game)
 {
 	t_ray	ray[W_WIDTH];
 
+	game->mlx = mlx_init(W_WIDTH, W_HEIGHT, "cub3D", false);
+	if (!game->mlx)
+		ft_msj_error(game, 1, NULL);
+	open_textures(game);
+	init_minimap(game);
 	init_animations(game);
 	game->ray = ray;
 	game->window_img = mlx_new_image(game->mlx, W_WIDTH, W_HEIGHT);

@@ -5,37 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:36:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:36:50 by dparada          ###   ########.fr       */
+/*   Created: 2024/12/20 15:39:27 by dparada           #+#    #+#             */
+/*   Updated: 2024/12/20 15:53:40 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D.h"
 
-static int	check_valid_walls(t_cub *game, int y, int x)
+static void	check_valid_walls(t_cub *game, int y, int x)
 {
 	if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y - 1])
-		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
+		ft_msj_error(game, 1, "Map not closed properly.");
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y + 1])
-		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
+		ft_msj_error(game, 1, "Map not closed properly.");
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y][x - 1])
-		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
+		ft_msj_error(game, 1, "Map not closed properly.");
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y][x + 1])
-		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
-	return (1);
+		ft_msj_error(game, 1, "Map not closed properly.");
+	check_valid_door(game, game->map, x, y);
 }
 
-static int	check_char(t_cub *game, char current, char next)
+static void	check_char(t_cub *game, char current, char next)
 {
-	if (!ft_strchr("10NSWE ", current))
-		return (ft_msj_error(game, 1, "Invalid character on map."), 0);
+	if (!ft_strchr("10NSWED ", current))
+		ft_msj_error(game, 1, "Invalid character on map.");
 	else if (current == '1' || current == ' ')
-		return (1);
-	else if (current == '0' && (!ft_strchr("10NSWE", next) || !next))
-		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
-	else if (ft_strchr("NSWE", current) && (!ft_strchr("10", next) || !next))
-		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
-	return (1);
+		return ;
+	else if (current == 'D' && !game->coor->is_door)
+		ft_msj_error(game, 1, "Invalid character on map.");
+	else if ((current == '0' || current == 'D') && (!ft_strchr("10NSWED", next)
+			|| !next))
+		ft_msj_error(game, 1, "Map not closed properly.");
+	else if (ft_strchr("NSWE", current) && (!ft_strchr("10D", next) || !next))
+		ft_msj_error(game, 1, "Map not closed properly.");
 }
 
 static void	add_spaces(t_cub *game)

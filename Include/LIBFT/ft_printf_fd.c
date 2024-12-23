@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:52:39 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/05 13:38:13 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/17 13:15:37 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static void	ft_put_str(char	*str)
 
 	i = -1;
 	if (!str)
+	{
 		ft_put_str("(null)\n");
+		return ;
+	}
 	while (str[++i])
 		ft_put_char(str[i]);
 }

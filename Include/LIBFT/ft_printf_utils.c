@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 11:14:37 by dparada           #+#    #+#             */
-/*   Updated: 2023/12/07 14:41:38 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/10 17:10:09 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strdiv(unsigned long nb)
 	int	i;
 
 	i = 0;
-	if (nb < 16 && nb >= 0)
+	if (nb < 16)
 		i = 1;
 	else
 	{

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:37:50 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:37:52 by dparada          ###   ########.fr       */
+/*   Created: 2024/12/20 15:41:07 by dparada           #+#    #+#             */
+/*   Updated: 2024/12/20 15:41:09 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ static void	set_collision(t_cub *g, t_ray *ray, int map_x, int map_y)
 			/ ray->sin + g->player->x;
 		ray->col_y = map_x + (1 - ray->step_x) / 2.0;
 	}
+	ray->door = false;
+	if (g->map[map_y][map_x] == 'D')
+		ray->door = true;
 }
 
 static void	collision_bucle(t_cub *g, t_ray *ray)
@@ -61,7 +64,7 @@ static void	collision_bucle(t_cub *g, t_ray *ray)
 			ray->side_dist_y += ray->delta_dist_y;
 			ray->side = 1;
 		}
-		if (g->map[map_y][map_x] == '1')
+		if (g->map[map_y][map_x] == '1' || g->map[map_y][map_x] == 'D')
 			break ;
 	}
 	set_collision(g, ray, map_x, map_y);

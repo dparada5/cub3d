@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:37:38 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:37:40 by dparada          ###   ########.fr       */
+/*   Created: 2024/12/20 15:40:39 by dparada           #+#    #+#             */
+/*   Updated: 2024/12/20 15:44:35 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static mlx_texture_t	*set_texture(t_cub *g, t_ray *ray)
 		else
 			current = g->coor->north_i;
 	}
+	if (ray->door == true && g->coor->door_i)
+		current = g->coor->door_i;
 	ray->wall_x -= floor(ray->wall_x);
 	return (current);
 }
@@ -82,8 +84,8 @@ void	create_walls(t_cub *g, t_ray *ray, int i)
 	wall_height = (int)(W_HEIGHT / distance_corrected);
 	ray->start_y = (W_HEIGHT / 2) - (wall_height / 2);
 	ray->end_y = (W_HEIGHT / 2) + (wall_height / 2);
-	if (ray->end_y > W_HEIGHT)
-		ray->end_y = W_HEIGHT;
+	if (ray->end_y >= W_HEIGHT)
+		ray->end_y = W_HEIGHT - 1;
 	current = set_texture(g, ray);
 	ray->tex_x = (int)(ray->wall_x * current->width);
 	if ((ray->side == 0 && ray->cos < 0) || (ray->side == 1 && ray->sin > 0))

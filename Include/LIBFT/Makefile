@@ -6,12 +6,12 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 11:56:30 by dparada           #+#    #+#              #
-#    Updated: 2024/12/05 14:58:30 by dparada          ###   ########.fr        #
+#    Updated: 2024/12/19 09:46:23 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 MAGENTA = \033[35;1m
@@ -32,11 +32,7 @@ SOURCE = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_striteri.c ft_substr.c\
 		ft_strmapi.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c\
 		ft_strcmp.c ft_strlen_matrix.c ft_isspace.c ft_printf_fd.c \
-		ft_print_matrix.c
-		
-# SOURCE_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c\
-# 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
-# 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c\
+		ft_print_matrix.c ft_first_char.c
 
 SOURCE_P = ft_printf.c ft_putchar.c ft_hexa.c ft_itoa_u.c ft_itoa_p.c\
 			ft_printf_utils.c ft_punt.c ft_putchar.c\
@@ -44,7 +40,6 @@ SOURCE_P = ft_printf.c ft_putchar.c ft_hexa.c ft_itoa_u.c ft_itoa_p.c\
 SOURCE_G = get_next_line.c get_next_line_utils.c\
 
 OBJ = $(SOURCE:.c=.o)
-# OBJ_B = $(SOURCE_B:.c=.o)
 OBJ_G = $(SOURCE_G:.c=.o)
 OBJ_P = $(SOURCE_P:.c=.o)
 
@@ -56,10 +51,6 @@ $(NAME): $(OBJ)
 		
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-
-
-# bonus: $(OBJ_B)
-# 	@ar rcs $(NAME) $(OBJ_B)
 	
 gnl: $(OBJ_G)
 	@ar rcs $(NAME) $(OBJ_G)
@@ -72,10 +63,10 @@ clean:
 	@echo "$(RED)Cleaning objects.$(RESET)"
 
 fclean: clean
-	@rm -frf $(NAME) bonus printf gnl
+	@rm -frf $(NAME) printf gnl
 	@echo "$(RED)Libreria cleaned.$(RESET)"
 		
 re: fclean all
 	@echo "$(YELLOW)Libreria recompiled.$(RESET)"
 
-.PHONY: all bonus printf gnl clean fclean re
+.PHONY: all printf gnl clean fclean re
