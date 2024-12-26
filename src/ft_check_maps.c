@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:36:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 16:53:33 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 17:54:32 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	check_valid_walls(t_cub *game, int y, int x)
 {
 	if (game->map[y][x] && !ft_strchr("10NSWE ", game->map[y][x]))
-		return (ft_msj_error(game, 1, "Invalid character on map.."), 0);
+		return (ft_msj_error(game, 1, "Invalid character on map."), 0);
 	if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y - 1])
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y + 1])

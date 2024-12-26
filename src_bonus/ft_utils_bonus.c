@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:02 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 13:08:59 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 18:17:34 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	open_map(t_cub *game, char *argv)
 	char	*name;
 	char	*backslash;
 
-	if (argv[0] == '.')
-		ft_msj_error(game, 1, "Can't have hidden files.");
 	name = ft_strrchr(argv, '.');
 	backslash = ft_strrchr(argv, '/');
 	if (backslash && (!ft_strcmp (&backslash[1], ".cub") \
 	|| backslash[1] == '.'))
+		ft_msj_error(game, 1, "Can't have hidden files.");
+	if (ft_strlen(name) == ft_strlen(argv))
 		ft_msj_error(game, 1, "Can't have hidden files.");
 	if (ft_strcmp(name, ".cub"))
 		return (ft_msj_error(game, 1, "Incorrect extension"));
