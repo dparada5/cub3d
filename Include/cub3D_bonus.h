@@ -38,19 +38,6 @@ typedef struct s_animation
 	int				last_time;
 }				t_animation;
 
-// typedef struct s_minimap
-// {
-// 	int	start_y;
-// 	int	start_x;
-// 	int	end_y;
-// 	int	end_x;
-// 	int	width;
-// 	int	height;
-// 	int	pixel_size;
-// 	int	offset_y;
-// 	int	offset_x;
-// }				t_minimap;
-
 typedef struct s_colors
 {
 	int	red;
@@ -131,6 +118,8 @@ typedef struct s_cub
 void	init_animations(t_cub *g);
 void	update_animation(void *param);
 int		get_time(void);
+void	update_minimap(void *param);
+void	paint_minimap(t_cub *g);
 //---------------------------RAY CASTING------------------
 double	get_radian(int c);
 void	ray_casting(t_cub *g, t_ray *ray);
