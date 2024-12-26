@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_maps.c                                    :+:      :+:    :+:   */
+/*   ft_check_maps_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:27 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:53:40 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 11:14:31 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static void	check_char(t_cub *game, char current, char next)
 		ft_msj_error(game, 1, "Invalid character on map.");
 	else if (current == '1' || current == ' ')
 		return ;
-	else if (current == 'D' && !game->coor->is_door)
-		ft_msj_error(game, 1, "Invalid character on map.");
 	else if ((current == '0' || current == 'D') && (!ft_strchr("10NSWED", next)
 			|| !next))
 		ft_msj_error(game, 1, "Map not closed properly.");

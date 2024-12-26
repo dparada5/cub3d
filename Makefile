@@ -27,9 +27,10 @@ SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures save_memory \
 			init_mlx_game set_moves put_textures ray_casting keys distance mini_map \
 			paint_textures animations \
 
-SRC_F_BONUS = main ft_utils ft_get_map ft_check_maps free textures save_memory \
-			init_mlx_game set_moves put_textures ray_casting keys distance mini_map \
-			paint_textures animations door\
+SRC_F_BONUS = main_bonus ft_utils_bonus ft_get_map_bonus ft_check_maps_bonus free_bonus \
+			textures_bonus save_memory_bonus init_mlx_game_bonus set_moves_bonus \
+			put_textures_bonus ray_casting_bonus keys_bonus distance_bonus mini_map_bonus \
+			paint_textures_bonus animations_bonus door_bonus\
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o,$(SRC_FILES)))
