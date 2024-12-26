@@ -1,13 +1,13 @@
-NO Textures/grey_brick.png
+NO Textures/wall_1.png
 
-SO Textures/grey_brick.png
+SO Textures/wall_2.png
 
-WE Textures/grey_brick.png
+WE Textures/wall_3.png
 
-EA Textures/grey_brick.png
+EA Textures/wall_4.png
 
-F 167,167,167
-C 145,255,243
+F 107,24,24
+C 52,0,0
 
         1111111111111111111111111
         1000000001100000000000011
