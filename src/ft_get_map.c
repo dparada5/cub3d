@@ -6,13 +6,13 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 17:45:18 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 17:53:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D.h"
 
-static int	check_content(t_cub *game, char *line, int len, int u)
+/* static int	check_content(t_cub *game, char *line, int len, int u)
 {
 	int	i;
 
@@ -29,17 +29,16 @@ static int	check_content(t_cub *game, char *line, int len, int u)
 			if (line[i] != ' ' && line[i] != '\n')
 				break ;
 	}
-	if (u && line[i] && line[i] == ' ' && line[i] == '\n')
+	if (u && !line[i])
 		ft_msj_error(game, 1, "No content in texture line.");
 	else if (!u && line[i] && line[i] == ' ' && line[i] == '\n')
 		ft_msj_error(game, 1, "No content in color line.");
 	return (1);
-}
+} */
 
 static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
 {
-	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' '))
-		&& check_content(game, line, ft_first_char(line, ' '), 1))
+	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' ')))
 	{
 		game->coor->n_coor++;
 		return (ft_substr(line, 0, ft_strlen(line) - 1));

@@ -6,45 +6,22 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 16:49:20 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 18:18:52 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D_bonus.h"
-
-static int	check_content(t_cub *game, char *line, int len, int u)
-{
-	int	i;
-
-	if (!line)
-		return (0);
-	if (u && ft_strlen(line) <= (size_t)len)
-		ft_msj_error(game, 1, "No content in texture line.");
-	else if (!u && ft_strlen(line) <= (size_t)len)
-		ft_msj_error(game, 1, "No content in color line.");
-	else
-	{
-		i = len - 2;
-		while (line[++i])
-			if (line[i] != ' ' && line[i] != '\n')
-				break ;
-	}
-	if (u && line[i] && line[i] == ' ' && line[i] == '\n')
-		ft_msj_error(game, 1, "No content in texture line.");
-	else if (!u && line[i] && line[i] == ' ' && line[i] == '\n')
-		ft_msj_error(game, 1, "No content in color line.");
-	return (1);
-}
-
 static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
 {
-	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' '))
-		&& check_content(game, line, ft_first_char(line, ' '), 1))
+	//recorda que se eliminó una func por si da error despues
+	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' ')))
 	{
 		game->coor->n_coor++;
 		return (ft_substr(line, 0, ft_strlen(line) - 1));
 	}
-	return (dst);
+	if (dst)
+		return (dst);
+	return (NULL);
 }
 
 static void	ft_save_coor(t_cub *g, char *line)
