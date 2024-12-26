@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   distance.c                                         :+:      :+:    :+:   */
+/*   distance_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:13 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:39:15 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:13:02 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 double	calculate_distance(t_cub *g, t_ray *ray, int map_x, int map_y)
 {

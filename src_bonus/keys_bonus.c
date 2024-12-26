@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   keys_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:15 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:40:17 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:16:52 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 void	key_w(t_cub *g)
 {
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y + P_MOVE * sin(g->player->r_view);
-	new_x = g->player->x + P_MOVE * cos(g->player->r_view);
+	new_y = g->player->y + (P_MOVE * 2) * sin(g->player->r_view);
+	new_x = g->player->x + (P_MOVE * 2) * cos(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1'
 		&& g->map[(int)new_y][(int)new_x] != 'D')
 	{
@@ -27,8 +27,8 @@ void	key_w(t_cub *g)
 				&& (g->map[(int)g->player->y][(int)new_x] != '1'
 					&& g->map[(int)g->player->y][(int)new_x] != 'D'))
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y + P_MOVE * sin(g->player->r_view);
+			g->player->x = g->player->x + P_MOVE * cos(g->player->r_view);
 		}
 	}
 }
@@ -38,8 +38,8 @@ void	key_s(t_cub *g)
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y - P_MOVE * sin(g->player->r_view);
-	new_x = g->player->x - P_MOVE * cos(g->player->r_view);
+	new_y = g->player->y - (P_MOVE * 2) * sin(g->player->r_view);
+	new_x = g->player->x - (P_MOVE * 2) * cos(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1'
 		&& g->map[(int)new_y][(int)new_x] != 'D')
 	{
@@ -48,8 +48,8 @@ void	key_s(t_cub *g)
 				&& (g->map[(int)g->player->y][(int)new_x] != '1'
 					&& g->map[(int)g->player->y][(int)new_x] != 'D'))
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y - P_MOVE * sin(g->player->r_view);
+			g->player->x = g->player->x - P_MOVE * cos(g->player->r_view);
 		}
 	}
 }
@@ -59,8 +59,8 @@ void	key_a(t_cub *g)
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y - P_MOVE * cos(g->player->r_view);
-	new_x = g->player->x + P_MOVE * sin(g->player->r_view);
+	new_y = g->player->y - (P_MOVE * 2) * cos(g->player->r_view);
+	new_x = g->player->x + (P_MOVE * 2) * sin(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1'
 		&& g->map[(int)new_y][(int)new_x] != 'D')
 	{
@@ -69,8 +69,8 @@ void	key_a(t_cub *g)
 				&& (g->map[(int)g->player->y][(int)new_x] != '1'
 					&& g->map[(int)g->player->y][(int)new_x] != 'D'))
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y - P_MOVE * cos(g->player->r_view);
+			g->player->x = g->player->x + P_MOVE * sin(g->player->r_view);
 		}
 	}
 }
@@ -80,8 +80,8 @@ void	key_d(t_cub *g)
 	double	new_y;
 	double	new_x;
 
-	new_y = g->player->y + P_MOVE * cos(g->player->r_view);
-	new_x = g->player->x - P_MOVE * sin(g->player->r_view);
+	new_y = g->player->y + (P_MOVE * 2) * cos(g->player->r_view);
+	new_x = g->player->x - (P_MOVE * 2) * sin(g->player->r_view);
 	if (g->map[(int)new_y][(int)new_x] != '1'
 		&& g->map[(int)new_y][(int)new_x] != 'D')
 	{
@@ -90,8 +90,8 @@ void	key_d(t_cub *g)
 				&& (g->map[(int)g->player->y][(int)new_x] != '1'
 					&& g->map[(int)g->player->y][(int)new_x] != 'D'))
 		{
-			g->player->y = new_y;
-			g->player->x = new_x;
+			g->player->y = g->player->y + P_MOVE * cos(g->player->r_view);
+			g->player->x = g->player->x - P_MOVE * sin(g->player->r_view);
 		}
 	}
 }

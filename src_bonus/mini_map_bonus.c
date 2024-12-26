@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:31 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 12:49:27 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:09:03 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 // static void	color_player(t_cub *g, int pos_y, int pos_x, int p_size)
 // {

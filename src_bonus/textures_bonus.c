@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
+/*   textures_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:41:24 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 18:14:54 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:12:31 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 static int	check_line(t_cub *game, int u, char *line, char *msg_error)
 {

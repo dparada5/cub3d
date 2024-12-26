@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_textures.c                                     :+:      :+:    :+:   */
+/*   put_textures_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:41:00 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:41:01 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:09:03 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 int	get_rgba(int r, int g, int b, int a)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   paint_textures.c                                   :+:      :+:    :+:   */
+/*   paint_textures_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:39 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:44:35 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:20:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 static int	get_color(mlx_texture_t *curr, int index)
 {
@@ -84,8 +84,8 @@ void	create_walls(t_cub *g, t_ray *ray, int i)
 	wall_height = (int)(W_HEIGHT / distance_corrected);
 	ray->start_y = (W_HEIGHT / 2) - (wall_height / 2);
 	ray->end_y = (W_HEIGHT / 2) + (wall_height / 2);
-	if (ray->end_y >= W_HEIGHT)
-		ray->end_y = W_HEIGHT - 1;
+	if (ray->end_y > W_HEIGHT)
+		ray->end_y = W_HEIGHT;
 	current = set_texture(g, ray);
 	ray->tex_x = (int)(ray->wall_x * current->width);
 	if ((ray->side == 0 && ray->cos < 0) || (ray->side == 1 && ray->sin > 0))

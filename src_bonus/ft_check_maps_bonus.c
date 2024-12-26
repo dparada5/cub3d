@@ -6,16 +6,18 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:27 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 11:14:31 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 16:54:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 static void	check_valid_walls(t_cub *game, int y, int x)
 {
+	if (game->map[y][x] &&  !ft_strchr("10NSWED ", game->map[y][x]))
+		ft_msj_error(game, 1, "Invalid char on map.");
 	if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y - 1])
-		ft_msj_error(game, 1, "Map not closed properly.");
+		ft_msj_error(game, 1, "Map not closed properly..");
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y + 1])
 		ft_msj_error(game, 1, "Map not closed properly.");
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y][x - 1])
@@ -79,12 +81,10 @@ static void	count_players(t_cub *game)
 		ft_msj_error(game, 1, "Invalid number of players.");
 }
 
-void	ft_check_map(t_cub *game)
+void	ft_check_map(t_cub *game, int y, int x)
 {
-	int	x;
-	int	y;
-
-	y = -1;
+	if (game->coor->n_coor != 7)
+		ft_msj_error(game, 1, "There's no texture.");
 	if (!game->map)
 		return (ft_msj_error(game, 1, "There's no map."));
 	add_spaces(game);
