@@ -6,30 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:37:31 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 18:25:57 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:02:13 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D.h"
-
-void	ft_init_game(t_cub *game)
-{
-	game->mlx = NULL;
-	game->coor = malloc_coor(game);
-	game->player = malloc(sizeof(t_player));
-	if (!game->player)
-		ft_msj_error(game, 1, "Malloc failed.");
-	game->map = NULL;
-	game->map_len = 0;
-	game->start_map = 0;
-	game->n_player = 0;
-	game->fd = -1;
-	game->open = 0;
-	game->anim = NULL;
-	game->mini_map = malloc(sizeof(t_minimap));
-	if (!game->mini_map)
-		ft_msj_error(game, 1, "Malloc failed.");
-}
 
 int	main(int argc, char **argv)
 {

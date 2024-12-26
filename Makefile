@@ -24,8 +24,8 @@ BOLD	= \033[1m
 RED		= \033[31;1m
 
 SRC_FILES = main ft_utils ft_get_map ft_check_maps free textures save_memory \
-			init_mlx_game set_moves put_textures ray_casting keys distance mini_map \
-			paint_textures animations \
+			init_mlx_game set_moves put_textures ray_casting keys distance \
+			paint_textures \
 
 SRC_F_BONUS = main_bonus ft_utils_bonus ft_get_map_bonus ft_check_maps_bonus free_bonus \
 			textures_bonus save_memory_bonus init_mlx_game_bonus set_moves_bonus \

@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:36:14 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:36:16 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 12:58:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,6 @@ static void	free_coor(t_coor *coor)
 		free(coor);
 }
 
-static void	free_anim(t_animation *anim)
-{
-	int	i;
-
-	i = 0;
-	while (i < ANIMATIONS)
-	{
-		if (anim->frames[i])
-			mlx_delete_texture(anim->frames[i]);
-		i++;
-	}
-	free(anim);
-}
-
 void	free_game(t_cub *game)
 {
 	if (game)
@@ -73,10 +59,6 @@ void	free_game(t_cub *game)
 			free(game->player);
 		if (game->fd != -1)
 			close(game->fd);
-		if (game->mini_map)
-			free(game->mini_map);
-		if (game->anim)
-			free_anim(game->anim);
 		if (game->mlx)
 			mlx_terminate(game->mlx);
 		free(game);

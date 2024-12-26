@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:38:03 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 18:22:06 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 13:01:17 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,12 @@ t_coor	*malloc_coor(t_cub *game)
 	coor->south = NULL;
 	coor->east = NULL;
 	coor->west = NULL;
-	coor->door = NULL;
 	coor->floor = NULL;
 	coor->ceiling = NULL;
 	coor->north_i = NULL;
 	coor->south_i = NULL;
 	coor->east_i = NULL;
 	coor->west_i = NULL;
-	coor->door_i = NULL;
 	coor->t_ceiling = NULL;
 	coor->t_floor = NULL;
 	return (coor);
