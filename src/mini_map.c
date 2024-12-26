@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:37:55 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:37:56 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 12:48:46 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	mini_map(void *param)
 	t_cub	*g;
 
 	g = (t_cub *)param;
+	(void)g;
 	//put_map_background(g);
 	//put_walls(g, g->mini_map, g->player->x, g->player->y);
 	//resize_map(g);
