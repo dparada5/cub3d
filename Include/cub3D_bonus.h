@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:53:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 16:53:48 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 16:53:51 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "LIBFT/libft.h"
 # include "MLX42_P2/include/MLX42/MLX42.h"
@@ -26,6 +26,30 @@
 # define N_PI 3.14159265359
 # define N_PI_2 1.57079632679
 # define PIXEL 64
+# define ANIMATIONS 7
+# define ANIM_SIZE 500
+# define DELAY 100
+
+typedef struct s_animation
+{
+	mlx_texture_t	*frames[ANIMATIONS];
+	mlx_image_t		*img;
+	int				current_frame;
+	int				last_time;
+}				t_animation;
+
+// typedef struct s_minimap
+// {
+// 	int	start_y;
+// 	int	start_x;
+// 	int	end_y;
+// 	int	end_x;
+// 	int	width;
+// 	int	height;
+// 	int	pixel_size;
+// 	int	offset_y;
+// 	int	offset_x;
+// }				t_minimap;
 
 typedef struct s_colors
 {
@@ -64,6 +88,7 @@ typedef struct s_ray
 	int		tex_x;
 	int		tex_y;
 	int		index;
+	bool	door;
 }	t_ray;
 
 typedef struct s_coor
@@ -74,6 +99,7 @@ typedef struct s_coor
 	char			*east;
 	char			*floor;
 	char			*ceiling;
+	char			*door;
 	int				n_coor;
 	t_colors		*t_floor;
 	t_colors		*t_ceiling;
@@ -81,6 +107,7 @@ typedef struct s_coor
 	mlx_texture_t	*south_i;
 	mlx_texture_t	*west_i;
 	mlx_texture_t	*east_i;
+	mlx_texture_t	*door_i;
 }				t_coor;
 
 typedef struct s_cub
@@ -93,11 +120,17 @@ typedef struct s_cub
 	int			error_flag;
 	int			start_map;
 	int			n_player;
+	int			open;
 	t_ray		*ray;
 	t_player	*player;
 	t_coor		*coor;
+	t_animation	*anim;
 }			t_cub;
 
+//---------------------------BONUS------------------------
+void	init_animations(t_cub *g);
+void	update_animation(void *param);
+int		get_time(void);
 //---------------------------RAY CASTING------------------
 double	get_radian(int c);
 void	ray_casting(t_cub *g, t_ray *ray);
@@ -133,5 +166,8 @@ void	ft_maps(t_cub *game, char *aux, char *result);
 void	free_game(t_cub *game);
 //--------------------------MALLOC------------------------
 t_coor	*malloc_coor(t_cub *game);
+//--------------------------DOOR--------------------------
+void	open_door(t_cub *g);
+void	check_valid_door(t_cub *g, char **map, int x, int y);
 
 #endif
