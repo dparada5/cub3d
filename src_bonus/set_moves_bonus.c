@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_moves_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:41:18 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 13:09:04 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 18:35:33 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ static void	make_move(t_cub *g, mlx_key_data_t key)
 		key_s(g);
 	if (key.key == MLX_KEY_LEFT || key.key == MLX_KEY_RIGHT)
 		key_left_right(g, key);
-	put_textures(g);
-	ray_casting(g, g->ray);
 }
 
 void	set_moves(mlx_key_data_t key, void *param)

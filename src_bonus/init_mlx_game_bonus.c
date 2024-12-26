@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx_game_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:08 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 15:54:10 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 18:50:07 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ static void	mouse_cam(void *param)
 	if (y < W_HEIGHT && y > 0)
 	{
 		if (x < (W_WIDTH / 2) && x < (W_WIDTH / 2) - (W_WIDTH / 4) && x > 0)
+		{
 			g->player->r_view -= ANG_MOVE;
+			put_textures(g);
+			ray_casting(g, g->ray);	
+		}
 		if (x > (W_WIDTH / 2) && x > (W_WIDTH / 2)
 			+ (W_WIDTH / 4) && x < W_WIDTH)
+		{
 			g->player->r_view += ANG_MOVE;
-		put_textures(g);
-		ray_casting(g, g->ray);
+			put_textures(g);
+			ray_casting(g, g->ray);
+		}
 	}
 }
 
