@@ -6,11 +6,11 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 17:20:13 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 17:45:18 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D_bonus.h"
+#include "../Include/cub3D.h"
 
 static int	check_content(t_cub *game, char *line, int len, int u)
 {
@@ -38,7 +38,6 @@ static int	check_content(t_cub *game, char *line, int len, int u)
 
 static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
 {
-	ft_printf_fd("---------------------------deaca\n");
 	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' '))
 		&& check_content(game, line, ft_first_char(line, ' '), 1))
 	{
