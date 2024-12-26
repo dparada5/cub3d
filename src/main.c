@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:37:31 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 13:02:13 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 16:54:00 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_init_game(game);
 	open_map(game, argv[1]);
-	ft_maps(game, NULL, NULL, NULL);
-	ft_check_map(game);
+	ft_maps(game, NULL, NULL);
+	ft_check_map(game, -1, -1);
+	open_textures(game);
 	init_mlx_game(game);
 	free_game(game);
 	return (0);

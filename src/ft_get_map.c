@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:37:01 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:37:03 by dparada          ###   ########.fr       */
+/*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
+/*   Updated: 2024/12/26 17:20:13 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/cub3D.h"
+#include "../Include/cub3D_bonus.h"
 
 static int	check_content(t_cub *game, char *line, int len, int u)
 {
@@ -29,74 +29,78 @@ static int	check_content(t_cub *game, char *line, int len, int u)
 			if (line[i] != ' ' && line[i] != '\n')
 				break ;
 	}
-	if (!u && line[i] && line[i] == ' ' && line[i] == '\n')
-		ft_msj_error(game, 1, "No content in color line.");
-	else if (u && line[i] && line[i] == ' ' && line[i] == '\n')
+	if (u && line[i] && line[i] == ' ' && line[i] == '\n')
 		ft_msj_error(game, 1, "No content in texture line.");
+	else if (!u && line[i] && line[i] == ' ' && line[i] == '\n')
+		ft_msj_error(game, 1, "No content in color line.");
 	return (1);
 }
 
-static void	ft_save_coor(t_cub *game, char *line)
+static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
 {
-	if (!game->coor->north && !ft_strncmp(line, "NO", ft_first_char(line, ' '))
+	ft_printf_fd("---------------------------deaca\n");
+	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' '))
 		&& check_content(game, line, ft_first_char(line, ' '), 1))
-		game->coor->north = ft_substr(line, 0, ft_strlen(line) - 1);
-	if (!game->coor->south && !ft_strncmp(line, "SO", ft_first_char(line, ' '))
-		&& check_content(game, line, ft_first_char(line, ' '), 1))
-		game->coor->south = ft_substr(line, 0, ft_strlen(line) - 1);
-	if (!game->coor->west && !ft_strncmp(line, "WE", ft_first_char(line, ' '))
-		&& check_content(game, line, ft_first_char(line, ' '), 1))
-		game->coor->west = ft_substr(line, 0, ft_strlen(line) - 1);
-	if (!game->coor->east && !ft_strncmp(line, "EA", ft_first_char(line, ' '))
-		&& check_content(game, line, ft_first_char(line, ' '), 1))
-		game->coor->east = ft_substr(line, 0, ft_strlen(line) - 1);
-	if (!game->coor->floor && !ft_strncmp(line, "F", ft_first_char(line, ' '))
-		&& check_content(game, line, ft_first_char(line, ' '), 0))
-		game->coor->floor = ft_substr(line, 0, ft_strlen(line) - 1);
-	if (!game->coor->ceiling && !ft_strncmp(line, "C", ft_first_char(line, ' '))
-		&& check_content(game, line, ft_first_char(line, ' '), 0))
-		game->coor->ceiling = ft_substr(line, 0, ft_strlen(line) - 1);
-	if (game->coor->n_coor >= 6 && ft_strcmp(line, "\n") \
-	&& !ft_is_all_space(line))
-		game->start_map = 1;
-	if (ft_strcmp(line, "\n") && ft_strlen(line))
+	{
 		game->coor->n_coor++;
+		return (ft_substr(line, 0, ft_strlen(line) - 1));
+	}
+	if (dst)
+		return (dst);
+	return (NULL);
 }
 
-static void	check_newline(t_cub *game, char *line)
+static void	ft_save_coor(t_cub *g, char *line)
+{
+	g->coor->north = coor(g, g->coor->north, "NO", line);
+	g->coor->south = coor(g, g->coor->south, "SO", line);
+	g->coor->west = coor(g, g->coor->west, "WE", line);
+	g->coor->east = coor(g, g->coor->east, "EA", line);
+	g->coor->floor = coor(g, g->coor->floor, "F", line);
+	g->coor->ceiling = coor(g, g->coor->ceiling, "C", line);
+	if (g->coor->n_coor >= 6 && ft_strcmp(line, "\n") \
+	&& !ft_is_all_space(line))
+		g->start_map = 1;
+}
+
+static int	check_newline(char *line)
 {
 	int	i;
 
 	i = -1;
 	if (!line)
-		return ;
+		return (1);
 	while (line[++i])
 		if (line[i + 1] && line[i] == '\n' && line[i + 1] == '\n')
-			ft_msj_error(game, 1, "Newline in the middle of map.");
+			return (0);
+	return (1);
 }
 
-void	ft_maps(t_cub *game, char *aux, char *result, char *prev)
+void	ft_maps(t_cub *game, char *aux, char *result)
 {
 	char	*line;
+	int		flag;
 
+	flag = 0;
 	line = get_next_line(game->fd);
 	while (line)
 	{
 		if (!game->start_map)
 			ft_save_coor(game, line);
-		if (game->start_map)
+		else if (game->start_map)
 		{
 			aux = result;
 			result = ft_strjoin(aux, line);
-			check_newline(game, result);
+			if (!check_newline(result))
+				flag = 1;
 		}
-		free(prev);
-		prev = ft_strdup(line);
 		free(line);
 		line = get_next_line(game->fd);
 	}
-	if (result)
+	if (result && !flag)
 		game->map = ft_split(result, '\n');
-	free(prev);
-	free(result);
+	if (result)
+		free(result);
+	if (flag)
+		ft_msj_error(game, 1, "Newline in the middle of map.");
 }

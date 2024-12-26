@@ -64,13 +64,16 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIB)| $(OBJF)
 		@echo "$(WHITE)Compiling: $(RESET)$(notdir $<)"
 		@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_BONUS_DIR)%.o: $(SRC_BONUS_DIR)%.c | $(OBJF)
+$(OBJ_BONUS_DIR)%.o: $(SRC_BONUS_DIR)%.c | $(OBJF_BONUS)
 		@mkdir -p $(dir $@)
 		@echo "$(WHITE)Compiling: $(RESET)$(notdir $<)"
 		@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJF):
-		@mkdir -p $(OBJ_DIR) $(OBJ_BONUS_DIR)
+		@mkdir -p $(OBJ_DIR)
+
+$(OBJF_BONUS):
+		@mkdir -p $(OBJ_BONUS_DIR)
 
 compiling:
 		@echo "$(RED)Compiling Cub3D: $(RESET)"

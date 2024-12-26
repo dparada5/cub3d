@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 13:06:12 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 13:06:14 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 16:10:38 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	init_mlx_game(t_cub *game)
 	game->mlx = mlx_init(W_WIDTH, W_HEIGHT, "cub3D", false);
 	if (!game->mlx)
 		ft_msj_error(game, 1, NULL);
-	open_textures(game);
 	game->ray = ray;
 	game->window_img = mlx_new_image(game->mlx, W_WIDTH, W_HEIGHT);
 	put_textures(game);

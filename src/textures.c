@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:38:26 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/20 15:38:28 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 15:55:28 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	open_textures(t_cub *g)
 	aux = NULL;
 	if (!g->coor->north || !g->coor->south \
 	|| !g->coor->east || !g->coor->west)
-		ft_msj_error(g, 1, "No path to texture..");
+		ft_msj_error(g, 1, "No path to texture.");
 	g->coor->north_i = ft_load_texture(g, g->coor->north);
 	g->coor->south_i = ft_load_texture(g, g->coor->south);
 	g->coor->east_i = ft_load_texture(g, g->coor->east);
