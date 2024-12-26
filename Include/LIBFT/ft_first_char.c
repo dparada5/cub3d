@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:37:55 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/19 09:45:27 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 17:05:56 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_first_char(char *s, int c)
 	int		i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 	{
 		if (s[i] == c)

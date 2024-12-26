@@ -6,7 +6,7 @@
 #    By: dparada <dparada@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 11:56:30 by dparada           #+#    #+#              #
-#    Updated: 2024/12/19 09:46:23 by dparada          ###   ########.fr        #
+#    Updated: 2024/12/26 15:33:32 by dparada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SOURCE = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 SOURCE_P = ft_printf.c ft_putchar.c ft_hexa.c ft_itoa_u.c ft_itoa_p.c\
 			ft_printf_utils.c ft_punt.c ft_putchar.c\
 
-SOURCE_G = get_next_line.c get_next_line_utils.c\
+SOURCE_G = get_next_line_tobi.c get_next_line_tobi_utils.c\
 
 OBJ = $(SOURCE:.c=.o)
 OBJ_G = $(SOURCE_G:.c=.o)

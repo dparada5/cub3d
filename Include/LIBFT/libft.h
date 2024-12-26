@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:17:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/19 09:46:15 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/26 15:35:14 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,17 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*get_next_line(int fd);
-char	*ft_strjoin_gnl(char *buffer, char *line, int readline);
+char	*ft_free_gnl(char *s);
+int		ft_len(char *s);
+char	*ft_strjoin_gnl(char *bff, char *nl);
 char	*ft_strchr_gnl(char *s, int c);
-char	*ft_readfd(int fd, char *buffer);
-char	*ft_clean(char *buffer);
-char	*ft_get_the_line(char *line);
-void	*ft_calloc_gnl(size_t count, size_t size);
-int		ft_strlen_gnl(char *s);
+char	*ft_strdup_gnl(const char *s1);
+// char	*ft_strchr_gnl(char *s, int c);
+// char	*ft_readfd(int fd, char *buffer);
+// char	*ft_clean(char *buffer);
+// char	*ft_get_the_line(char *line);
+// void	*ft_calloc_gnl(size_t count, size_t size);
+// int		ft_strlen_gnl(char *s);
 
 int		ft_printf(char const *str, ...);
 int		ft_check(char const *str, va_list parametros, int total);
