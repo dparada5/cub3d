@@ -6,14 +6,14 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 18:18:52 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 10:11:52 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D_bonus.h"
-static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
+
+static	char	*get_coor(t_cub *game, char *dst, char *coor, char *line)
 {
-	//recorda que se eliminó una func por si da error despues
 	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' ')))
 	{
 		game->coor->n_coor++;
@@ -26,13 +26,13 @@ static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
 
 static void	ft_save_coor(t_cub *g, char *line)
 {
-	g->coor->north = coor(g, g->coor->north, "NO", line);
-	g->coor->south = coor(g, g->coor->south, "SO", line);
-	g->coor->west = coor(g, g->coor->west, "WE", line);
-	g->coor->east = coor(g, g->coor->east, "EA", line);
-	g->coor->floor = coor(g, g->coor->floor, "F", line);
-	g->coor->ceiling = coor(g, g->coor->ceiling, "C", line);
-	g->coor->door = coor(g, g->coor->door, "D", line);
+	g->coor->north = get_coor(g, g->coor->north, "NO", line);
+	g->coor->south = get_coor(g, g->coor->south, "SO", line);
+	g->coor->west = get_coor(g, g->coor->west, "WE", line);
+	g->coor->east = get_coor(g, g->coor->east, "EA", line);
+	g->coor->floor = get_coor(g, g->coor->floor, "F", line);
+	g->coor->ceiling = get_coor(g, g->coor->ceiling, "C", line);
+	g->coor->door = get_coor(g, g->coor->door, "D", line);
 	if (g->coor->n_coor >= 7 && ft_strcmp(line, "\n") \
 	&& !ft_is_all_space(line))
 		g->start_map = 1;

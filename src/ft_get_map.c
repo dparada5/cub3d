@@ -6,37 +6,13 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 17:53:46 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 10:10:40 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D.h"
 
-/* static int	check_content(t_cub *game, char *line, int len, int u)
-{
-	int	i;
-
-	if (!line)
-		return (0);
-	if (u && ft_strlen(line) <= (size_t)len)
-		ft_msj_error(game, 1, "No content in texture line.");
-	else if (!u && ft_strlen(line) <= (size_t)len)
-		ft_msj_error(game, 1, "No content in color line.");
-	else
-	{
-		i = len - 2;
-		while (line[++i])
-			if (line[i] != ' ' && line[i] != '\n')
-				break ;
-	}
-	if (u && !line[i])
-		ft_msj_error(game, 1, "No content in texture line.");
-	else if (!u && line[i] && line[i] == ' ' && line[i] == '\n')
-		ft_msj_error(game, 1, "No content in color line.");
-	return (1);
-} */
-
-static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
+static	char	*get_coor(t_cub *game, char *dst, char *coor, char *line)
 {
 	if (!dst && !ft_strncmp(line, coor, ft_first_char(line, ' ')))
 	{
@@ -50,12 +26,12 @@ static	char	*coor(t_cub *game, char *dst, char *coor, char *line)
 
 static void	ft_save_coor(t_cub *g, char *line)
 {
-	g->coor->north = coor(g, g->coor->north, "NO", line);
-	g->coor->south = coor(g, g->coor->south, "SO", line);
-	g->coor->west = coor(g, g->coor->west, "WE", line);
-	g->coor->east = coor(g, g->coor->east, "EA", line);
-	g->coor->floor = coor(g, g->coor->floor, "F", line);
-	g->coor->ceiling = coor(g, g->coor->ceiling, "C", line);
+	g->coor->north = get_coor(g, g->coor->north, "NO", line);
+	g->coor->south = get_coor(g, g->coor->south, "SO", line);
+	g->coor->west = get_coor(g, g->coor->west, "WE", line);
+	g->coor->east = get_coor(g, g->coor->east, "EA", line);
+	g->coor->floor = get_coor(g, g->coor->floor, "F", line);
+	g->coor->ceiling = get_coor(g, g->coor->ceiling, "C", line);
 	if (g->coor->n_coor >= 6 && ft_strcmp(line, "\n") \
 	&& !ft_is_all_space(line))
 		g->start_map = 1;
