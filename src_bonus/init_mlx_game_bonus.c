@@ -6,7 +6,7 @@
 /*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:08 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/27 12:20:06 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/27 12:58:02 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	mouse_cam(t_cub *g)
 		{
 			g->player->r_view -= ANG_MOVE;
 			put_textures(g);
-			ray_casting(g, g->ray);	
+			ray_casting(g, g->ray);
 		}
 		if (x > (W_WIDTH / 2) && x > (W_WIDTH / 2)
 			+ (W_WIDTH / 4) && x < W_WIDTH)
@@ -43,7 +43,7 @@ static void	functions_loop(void *param)
 	game = (t_cub *)param;
 	mouse_cam(game);
 	update_animation(game);
-	update_minimap(game);
+	update_minimap(game, -1, -1);
 }
 
 void	ft_init_game(t_cub *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/27 10:42:31 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 12:53:16 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ static	char	*get_coor(t_cub *game, char *dst, char *coor, char *line)
 
 static void	ft_save_coor(t_cub *g, char *line)
 {
-	if (ft_strcmp(line, "\n") && ft_strlen(line) && 
-	(ft_strncmp(line, "NO", ft_first_char(line, ' ')) && 
-	ft_strncmp(line, "SO", ft_first_char(line, ' ')) && 
-	ft_strncmp(line, "WE", ft_first_char(line, ' ')) && 
-	ft_strncmp(line, "EA", ft_first_char(line, ' ')) && 
-	ft_strncmp(line, "F", ft_first_char(line, ' ')) && 
-		ft_strncmp(line, "C", ft_first_char(line, ' '))) && g->coor->n_coor < 6)
+	if (ft_strcmp(line, "\n") && ft_strlen(line)
+		&& (ft_strncmp(line, "NO", ft_first_char(line, ' '))
+			&& ft_strncmp(line, "SO", ft_first_char(line, ' '))
+			&& ft_strncmp(line, "WE", ft_first_char(line, ' '))
+			&& ft_strncmp(line, "EA", ft_first_char(line, ' '))
+			&& ft_strncmp(line, "F", ft_first_char(line, ' '))
+			&& ft_strncmp(line, "C", ft_first_char(line, ' ')))
+		&& g->coor->n_coor < 6)
 		ft_msj_error(g, 1, "Unrecognized line.");
 	g->coor->north = get_coor(g, g->coor->north, "NO", line);
 	g->coor->south = get_coor(g, g->coor->south, "SO", line);
@@ -41,7 +42,7 @@ static void	ft_save_coor(t_cub *g, char *line)
 	g->coor->floor = get_coor(g, g->coor->floor, "F", line);
 	g->coor->ceiling = get_coor(g, g->coor->ceiling, "C", line);
 	if (g->coor->n_coor >= 6 && ft_strcmp(line, "\n") \
-	&& !ft_is_all_space(line))
+		&& !ft_is_all_space(line))
 		g->start_map = 1;
 }
 

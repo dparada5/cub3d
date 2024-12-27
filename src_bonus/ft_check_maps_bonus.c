@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_maps_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:27 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/27 10:08:23 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 12:59:12 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_valid_walls(t_cub *game, int y, int x)
 {
-	if (game->map[y][x] &&  !ft_strchr("10NSWED ", game->map[y][x]))
+	if (game->map[y][x] && !ft_strchr("10NSWED ", game->map[y][x]))
 		ft_msj_error(game, 1, "Invalid char on map.");
 	if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y - 1])
 		ft_msj_error(game, 1, "Map not closed properly.");

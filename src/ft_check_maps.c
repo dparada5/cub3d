@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_maps.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:36:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/27 11:15:14 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 12:53:32 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	check_valid_walls(t_cub *game, int y, int x)
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y + 1])
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
-	else if (ft_strchr("0NSWE", game->map[y][x]) && (x == 0 || !game->map[y][x - 1]))
+	else if (ft_strchr("0NSWE", game->map[y][x])
+		&& (x == 0 || !game->map[y][x - 1]))
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y][x + 1])
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);

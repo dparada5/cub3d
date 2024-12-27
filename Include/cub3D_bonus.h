@@ -6,7 +6,7 @@
 /*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:53:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/27 12:18:48 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/27 12:56:57 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef struct s_cub
 int		get_time(void);
 void	update_animation(t_cub *g);
 void	init_animations(t_cub *g);
-void	update_minimap(t_cub *g);
+void	update_minimap(t_cub *g, int y, int x);
 void	paint_minimap(t_cub *g);
 //---------------------------RAY CASTING------------------
 double	get_radian(int c);
