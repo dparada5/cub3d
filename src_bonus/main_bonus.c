@@ -6,11 +6,22 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:21 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 16:54:33 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 10:02:04 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D_bonus.h"
+
+static void	menu(void)
+{
+	ft_printf("---------MENU-------------------------------------------:\n");
+	ft_printf("- WSAD keys to move around the map.\n");
+	ft_printf("- Left and right arrows keys to change player's view.\n");
+	ft_printf("- ESC key to end game.\n");
+	ft_printf("- O key to open and close doors. One at the time.\n");
+	ft_printf("- Use the mouse to change player's view.\n");
+	ft_printf("--------------------------------------------------------\n");
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,6 +29,9 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (ft_msj_error(NULL, 0, "Incorrect argument number."), 1);
+	if (W_HEIGHT <= 0 || W_WIDTH <= 0)
+		ft_msj_error(NULL, 1, "No valid measures.");
+	menu();
 	game = malloc(sizeof(t_cub));
 	if (!game)
 		return (1);
