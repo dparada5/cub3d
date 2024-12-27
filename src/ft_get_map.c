@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:54 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/27 10:10:40 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 10:42:31 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ static	char	*get_coor(t_cub *game, char *dst, char *coor, char *line)
 
 static void	ft_save_coor(t_cub *g, char *line)
 {
+	if (ft_strcmp(line, "\n") && ft_strlen(line) && 
+	(ft_strncmp(line, "NO", ft_first_char(line, ' ')) && 
+	ft_strncmp(line, "SO", ft_first_char(line, ' ')) && 
+	ft_strncmp(line, "WE", ft_first_char(line, ' ')) && 
+	ft_strncmp(line, "EA", ft_first_char(line, ' ')) && 
+	ft_strncmp(line, "F", ft_first_char(line, ' ')) && 
+		ft_strncmp(line, "C", ft_first_char(line, ' '))) && g->coor->n_coor < 6)
+		ft_msj_error(g, 1, "Unrecognized line.");
 	g->coor->north = get_coor(g, g->coor->north, "NO", line);
 	g->coor->south = get_coor(g, g->coor->south, "SO", line);
 	g->coor->west = get_coor(g, g->coor->west, "WE", line);
