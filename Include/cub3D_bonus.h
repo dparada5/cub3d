@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:53:57 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 16:53:51 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 12:18:48 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,10 @@ typedef struct s_cub
 }			t_cub;
 
 //---------------------------BONUS------------------------
-void	init_animations(t_cub *g);
-void	update_animation(void *param);
 int		get_time(void);
-void	update_minimap(void *param);
+void	update_animation(t_cub *g);
+void	init_animations(t_cub *g);
+void	update_minimap(t_cub *g);
 void	paint_minimap(t_cub *g);
 //---------------------------RAY CASTING------------------
 double	get_radian(int c);

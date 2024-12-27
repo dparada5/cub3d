@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animations_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:39:08 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 13:47:40 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 12:12:52 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,10 @@ void	init_animations(t_cub *g)
 	g->anim->last_time = get_time();
 }
 
-void	update_animation(void *param)
+void	update_animation(t_cub *g)
 {
-	t_cub	*g;
 	int		current_time;
 
-	g = (t_cub *)param;
 	current_time = get_time();
 	if (current_time - g->anim->last_time >= DELAY)
 	{

@@ -6,19 +6,17 @@
 /*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:40:08 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 19:16:45 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/27 12:20:06 by tanselmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/cub3D_bonus.h"
 
-static void	mouse_cam(void *param)
+static void	mouse_cam(t_cub *g)
 {
 	int		x;
 	int		y;
-	t_cub	*g;
 
-	g = (t_cub *)param;
 	mlx_get_mouse_pos(g->mlx, &x, &y);
 	if (y < W_HEIGHT && y > 0)
 	{
@@ -36,6 +34,16 @@ static void	mouse_cam(void *param)
 			ray_casting(g, g->ray);
 		}
 	}
+}
+
+static void	functions_loop(void *param)
+{
+	t_cub	*game;
+
+	game = (t_cub *)param;
+	mouse_cam(game);
+	update_animation(game);
+	update_minimap(game);
 }
 
 void	ft_init_game(t_cub *game)
@@ -70,9 +78,7 @@ void	init_mlx_game(t_cub *game)
 	mlx_key_hook(game->mlx, &set_moves, game);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_HIDDEN);
 	mlx_set_mouse_pos(game->mlx, W_WIDTH / 2, W_HEIGHT / 2);
-	mlx_loop_hook(game->mlx, &mouse_cam, game);
 	ray_casting(game, ray);
-	mlx_loop_hook(game->mlx, &update_animation, game);
-	mlx_loop_hook(game->mlx, &update_minimap, game);
+	mlx_loop_hook(game->mlx, &functions_loop, game);
 	mlx_loop(game->mlx);
 }

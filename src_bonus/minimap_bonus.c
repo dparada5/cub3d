@@ -16,13 +16,11 @@ static void	paint(mlx_image_t *img, int color, int x, int y)
 	}
 }
 
-void	update_minimap(void *param)
+void	update_minimap(t_cub *g)
 {
-	t_cub	*g;
 	int		y;
 	int		x;
 
-	g = (t_cub *)param;
 	y = -1;
 	while (g->map[++y])
 	{
