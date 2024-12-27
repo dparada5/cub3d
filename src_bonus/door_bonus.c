@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanselmo <tanselmo@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:05:49 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/27 13:02:02 by tanselmo         ###   ########.fr       */
+/*   Updated: 2024/12/27 13:10:28 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static void	check_door_in_x(t_cub *g, int y, int x, int *change)
 {
 	if (g->map[y] && g->map[y][x + 1])
 		g->map[y][x + 1] = check_next_char(g, g->map[y][x + 1], change);
-	if (g->map[y] && g->map[y][x - 1])
+	if (x > 0 && g->map[y] && g->map[y][x - 1])
 		g->map[y][x - 1] = check_next_char(g, g->map[y][x - 1], change);
 	if (g->map[y] && g->map[y][x + 1] && g->map[y][x + 2])
 		g->map[y][x + 2] = check_next_char(g, g->map[y][x + 2], change);
-	if (g->map[y] && g->map[y][x - 1] && g->map[y][x - 2])
+	if (x > 1 && g->map[y] && g->map[y][x - 1] && g->map[y][x - 2])
 		g->map[y][x - 2] = check_next_char(g, g->map[y][x - 2], change);
 }
 
