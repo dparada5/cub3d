@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:36:19 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 17:54:32 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 11:15:14 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static int	check_valid_walls(t_cub *game, int y, int x)
 {
 	if (game->map[y][x] && !ft_strchr("10NSWE ", game->map[y][x]))
 		return (ft_msj_error(game, 1, "Invalid character on map."), 0);
-	if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y - 1])
+	if (ft_strchr("0NSWE", game->map[y][x]) && (y == 0 || !game->map[y - 1]))
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y + 1])
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
-	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y][x - 1])
+	else if (ft_strchr("0NSWE", game->map[y][x]) && (x == 0 || !game->map[y][x - 1]))
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);
 	else if (ft_strchr("0NSWE", game->map[y][x]) && !game->map[y][x + 1])
 		return (ft_msj_error(game, 1, "Map not closed properly."), 0);

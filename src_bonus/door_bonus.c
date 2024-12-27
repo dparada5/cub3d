@@ -6,7 +6,7 @@
 /*   By: dparada <dparada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:05:49 by dparada           #+#    #+#             */
-/*   Updated: 2024/12/26 13:13:13 by dparada          ###   ########.fr       */
+/*   Updated: 2024/12/27 11:45:04 by dparada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,18 @@ void	check_valid_door(t_cub *g, char **map, int x, int y)
 {
 	if (map[y][x] == 'D')
 	{
-		if (map[y - 1][x] == '0' && map[y + 1][x] == '0')
-			if (map[y][x - 1] == '1' && map[y][x + 1] == '1')
+		// if (map[y - 1][x] == '0' && map[y + 1][x] == '0')
+		// y != 0 ||  x != 0 || 
+			// if (map[y][x - 1] == '1' && map[y][x + 1] == '1')
+		if (((map[y - 1] && map[y + 1])) && (ft_strchr("0NSWE", map[y - 1][x])
+			&& ft_strchr("0NSWE", map[y + 1][x])))
+			if (map[y][x - 1] && map[y][x + 1] && map[y][x - 1] == '1' && map[y][x + 1])
 				return ;
-		if (map[y][x - 1] == '0' && map[y][x + 1] == '0')
-			if (map[y - 1][x] == '1' && map[y + 1][x] == '1')
-				return ;
+		if (map[y][x - 1] && map[y][x + 1] && ft_strchr("0NSWE", map[y][x - 1])
+			&& ft_strchr("0NSWE", map[y][x + 1]))
+			if (map[y - 1][x] && map[y + 1][x] && map[y - 1][x] == '1'
+				&& map[y + 1][x] == '1')
+					return ;
 		ft_msj_error(g, 1, "Door has no access.");
 	}
 }
@@ -57,11 +63,11 @@ static void	check_door_in_y(t_cub *g, int y, int x, int *change)
 {
 	if (g->map[y + 1])
 		g->map[y + 1][x] = check_next_char(g, g->map[y + 1][x], change);
-	if (g->map[y - 1])
+	if (y > 0 && g->map[y - 1])
 		g->map[y - 1][x] = check_next_char(g, g->map[y - 1][x], change);
 	if (g->map[y + 1] && g->map[y + 2])
 		g->map[y + 2][x] = check_next_char(g, g->map[y + 2][x], change);
-	if (g->map[y - 1] && g->map[y - 2])
+	if (y > 1 && g->map[y - 1] && g->map[y - 2])
 		g->map[y - 2][x] = check_next_char(g, g->map[y - 2][x], change);
 }
 
